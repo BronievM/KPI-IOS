@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5091E8BF3061107000C83BDC /* kpi_scheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */; };
+		5091E8C13061107000C83BDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8C03061107000C83BDC /* ContentView.swift */; };
+		5091E8C33061107200C83BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E8C23061107200C83BDC /* Assets.xcassets */; };
+		5091E8C63061107200C83BDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E8C53061107200C83BDC /* Preview Assets.xcassets */; };
+		5091E8D03061107200C83BDC /* kpi_scheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */; };
+		5091E8DA3061107200C83BDC /* kpi_scheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */; };
+		5091E8DC3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5091E8CC3061107200C83BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5091E8B33061107000C83BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5091E8BA3061107000C83BDC;
+			remoteInfo = "kpi-schedule";
+		};
+		5091E8D63061107200C83BDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5091E8B33061107000C83BDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5091E8BA3061107000C83BDC;
+			remoteInfo = "kpi-schedule";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5091E8BB3061107000C83BDC /* kpi-schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kpi-schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleApp.swift; sourceTree = "<group>"; };
+		5091E8C03061107000C83BDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5091E8C23061107200C83BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5091E8C53061107200C83BDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5091E8CB3061107200C83BDC /* kpi-scheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleTests.swift; sourceTree = "<group>"; };
+		5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITests.swift; sourceTree = "<group>"; };
+		5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5091E8B83061107000C83BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8C83061107200C83BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8D23061107200C83BDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5091E8B23061107000C83BDC = {
+			isa = PBXGroup;
+			children = (
+				5091E8BD3061107000C83BDC /* kpi-schedule */,
+				5091E8CE3061107200C83BDC /* kpi-scheduleTests */,
+				5091E8D83061107200C83BDC /* kpi-scheduleUITests */,
+				5091E8BC3061107000C83BDC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5091E8BC3061107000C83BDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8BB3061107000C83BDC /* kpi-schedule.app */,
+				5091E8CB3061107200C83BDC /* kpi-scheduleTests.xctest */,
+				5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5091E8BD3061107000C83BDC /* kpi-schedule */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */,
+				5091E8C03061107000C83BDC /* ContentView.swift */,
+				5091E8C23061107200C83BDC /* Assets.xcassets */,
+				5091E8C43061107200C83BDC /* Preview Content */,
+			);
+			path = "kpi-schedule";
+			sourceTree = "<group>";
+		};
+		5091E8C43061107200C83BDC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8C53061107200C83BDC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5091E8CE3061107200C83BDC /* kpi-scheduleTests */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */,
+			);
+			path = "kpi-scheduleTests";
+			sourceTree = "<group>";
+		};
+		5091E8D83061107200C83BDC /* kpi-scheduleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */,
+				5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */,
+			);
+			path = "kpi-scheduleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5091E8BA3061107000C83BDC /* kpi-schedule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5091E8DF3061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-schedule" */;
+			buildPhases = (
+				5091E8B73061107000C83BDC /* Sources */,
+				5091E8B83061107000C83BDC /* Frameworks */,
+				5091E8B93061107000C83BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "kpi-schedule";
+			productName = "kpi-schedule";
+			productReference = 5091E8BB3061107000C83BDC /* kpi-schedule.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5091E8CA3061107200C83BDC /* kpi-scheduleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5091E8E23061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-scheduleTests" */;
+			buildPhases = (
+				5091E8C73061107200C83BDC /* Sources */,
+				5091E8C83061107200C83BDC /* Frameworks */,
+				5091E8C93061107200C83BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5091E8CD3061107200C83BDC /* PBXTargetDependency */,
+			);
+			name = "kpi-scheduleTests";
+			productName = "kpi-scheduleTests";
+			productReference = 5091E8CB3061107200C83BDC /* kpi-scheduleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5091E8D43061107200C83BDC /* kpi-scheduleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5091E8E53061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-scheduleUITests" */;
+			buildPhases = (
+				5091E8D13061107200C83BDC /* Sources */,
+				5091E8D23061107200C83BDC /* Frameworks */,
+				5091E8D33061107200C83BDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5091E8D73061107200C83BDC /* PBXTargetDependency */,
+			);
+			name = "kpi-scheduleUITests";
+			productName = "kpi-scheduleUITests";
+			productReference = 5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5091E8B33061107000C83BDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					5091E8BA3061107000C83BDC = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					5091E8CA3061107200C83BDC = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 5091E8BA3061107000C83BDC;
+					};
+					5091E8D43061107200C83BDC = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 5091E8BA3061107000C83BDC;
+					};
+				};
+			};
+			buildConfigurationList = 5091E8B63061107000C83BDC /* Build configuration list for PBXProject "kpi-schedule" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5091E8B23061107000C83BDC;
+			productRefGroup = 5091E8BC3061107000C83BDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5091E8BA3061107000C83BDC /* kpi-schedule */,
+				5091E8CA3061107200C83BDC /* kpi-scheduleTests */,
+				5091E8D43061107200C83BDC /* kpi-scheduleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5091E8B93061107000C83BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5091E8C63061107200C83BDC /* Preview Assets.xcassets in Resources */,
+				5091E8C33061107200C83BDC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8C93061107200C83BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8D33061107200C83BDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5091E8B73061107000C83BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5091E8C13061107000C83BDC /* ContentView.swift in Sources */,
+				5091E8BF3061107000C83BDC /* kpi_scheduleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8C73061107200C83BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5091E8D03061107200C83BDC /* kpi_scheduleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E8D13061107200C83BDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5091E8DC3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift in Sources */,
+				5091E8DA3061107200C83BDC /* kpi_scheduleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5091E8CD3061107200C83BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5091E8BA3061107000C83BDC /* kpi-schedule */;
+			targetProxy = 5091E8CC3061107200C83BDC /* PBXContainerItemProxy */;
+		};
+		5091E8D73061107200C83BDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5091E8BA3061107000C83BDC /* kpi-schedule */;
+			targetProxy = 5091E8D63061107200C83BDC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5091E8DD3061107200C83BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5091E8DE3061107200C83BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5091E8E03061107200C83BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5091E8E13061107200C83BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-schedule";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5091E8E33061107200C83BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-scheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kpi-schedule.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/kpi-schedule";
+			};
+			name = Debug;
+		};
+		5091E8E43061107200C83BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-scheduleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kpi-schedule.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/kpi-schedule";
+			};
+			name = Release;
+		};
+		5091E8E63061107200C83BDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-scheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kpi-schedule";
+			};
+			name = Debug;
+		};
+		5091E8E73061107200C83BDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-scheduleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kpi-schedule";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5091E8B63061107000C83BDC /* Build configuration list for PBXProject "kpi-schedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5091E8DD3061107200C83BDC /* Debug */,
+				5091E8DE3061107200C83BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5091E8DF3061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-schedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5091E8E03061107200C83BDC /* Debug */,
+				5091E8E13061107200C83BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5091E8E23061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-scheduleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5091E8E33061107200C83BDC /* Debug */,
+				5091E8E43061107200C83BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5091E8E53061107200C83BDC /* Build configuration list for PBXNativeTarget "kpi-scheduleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5091E8E63061107200C83BDC /* Debug */,
+				5091E8E73061107200C83BDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5091E8B33061107000C83BDC /* Project object */;
+}
