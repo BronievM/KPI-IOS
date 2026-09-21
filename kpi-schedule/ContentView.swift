@@ -37,7 +37,6 @@ struct LessonRowView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(lesson.type.rawValue).font(.headline)
             Text(lesson.subjectName).font(.title3).fontWeight(.bold)
-            
             Text("Teacher: \(lesson.teacher)").font(.subheadline).foregroundColor(.secondary)
             Text(lesson.getLocation()).font(.caption).foregroundColor(.gray)
            
