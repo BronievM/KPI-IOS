@@ -14,6 +14,23 @@
 		5091E8D03061107200C83BDC /* kpi_scheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */; };
 		5091E8DA3061107200C83BDC /* kpi_scheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */; };
 		5091E8DC3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */; };
+		509DF3F53087A73D00BD9208 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */; };
+		509DF3F73087A75300BD9208 /* JSONScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */; };
+		509DF3F93087A76800BD9208 /* MockScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */; };
+		509DF3FD3087A79100BD9208 /* LinkOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3FC3087A79100BD9208 /* LinkOpening.swift */; };
+		509DF4033087A7BE00BD9208 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4023087A7BE00BD9208 /* AppContainer.swift */; };
+		509DF4073087A82500BD9208 /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4063087A82500BD9208 /* LessonRowView.swift */; };
+		509DF4093087A86500BD9208 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4083087A86500BD9208 /* ScheduleViewModel.swift */; };
+		509DF40B3087A87B00BD9208 /* LessonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40A3087A87B00BD9208 /* LessonBuilder.swift */; };
+		509DF40D3087A88A00BD9208 /* LessonDTOAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */; };
+		509DF40F3087A89700BD9208 /* LessonFilterStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */; };
+		50A9206530879AFD00CBD338 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206430879AFD00CBD338 /* ScheduleItem.swift */; };
+		50A9206730879B1900CBD338 /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206630879B1900CBD338 /* LessonType.swift */; };
+		50A9206930879B2900CBD338 /* Lessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206830879B2900CBD338 /* Lessons.swift */; };
+		50A9206B30879B3600CBD338 /* DaulySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206A30879B3600CBD338 /* DaulySchedule.swift */; };
+		50D984333088998C000570DB /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D984323088998C000570DB /* Weekday.swift */; };
+		50D9843530889997000570DB /* LessonTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D9843430889997000570DB /* LessonTime.swift */; };
+		50D98439308899CC000570DB /* ScheduleClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D98438308899CC000570DB /* ScheduleClock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +61,23 @@
 		5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITests.swift; sourceTree = "<group>"; };
 		5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
+		509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONScheduleRepository.swift; sourceTree = "<group>"; };
+		509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleRepository.swift; sourceTree = "<group>"; };
+		509DF3FC3087A79100BD9208 /* LinkOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkOpening.swift; sourceTree = "<group>"; };
+		509DF4023087A7BE00BD9208 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		509DF4063087A82500BD9208 /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
+		509DF4083087A86500BD9208 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		509DF40A3087A87B00BD9208 /* LessonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBuilder.swift; sourceTree = "<group>"; };
+		509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDTOAdapter.swift; sourceTree = "<group>"; };
+		509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFilterStrategy.swift; sourceTree = "<group>"; };
+		50A9206430879AFD00CBD338 /* ScheduleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
+		50A9206630879B1900CBD338 /* LessonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
+		50A9206830879B2900CBD338 /* Lessons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lessons.swift; sourceTree = "<group>"; };
+		50A9206A30879B3600CBD338 /* DaulySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaulySchedule.swift; sourceTree = "<group>"; };
+		50D984323088998C000570DB /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		50D9843430889997000570DB /* LessonTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTime.swift; sourceTree = "<group>"; };
+		50D98438308899CC000570DB /* ScheduleClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleClock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +128,12 @@
 		5091E8BD3061107000C83BDC /* kpi-schedule */ = {
 			isa = PBXGroup;
 			children = (
-				5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */,
-				5091E8C03061107000C83BDC /* ContentView.swift */,
+				509DF4013087A7B300BD9208 /* App */,
+				509DF4003087A7AB00BD9208 /* Views */,
+				509DF3FF3087A7A300BD9208 /* ViewModels */,
+				509DF3FE3087A79900BD9208 /* Patterns */,
+				509DF3F33087A71700BD9208 /* Services */,
+				50A9206330879AD600CBD338 /* Models */,
 				5091E8C23061107200C83BDC /* Assets.xcassets */,
 				5091E8C43061107200C83BDC /* Preview Content */,
 			);
@@ -125,6 +163,67 @@
 				5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */,
 			);
 			path = "kpi-scheduleUITests";
+			sourceTree = "<group>";
+		};
+		509DF3F33087A71700BD9208 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */,
+				509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */,
+				509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */,
+				509DF3FC3087A79100BD9208 /* LinkOpening.swift */,
+				50D98438308899CC000570DB /* ScheduleClock.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		509DF3FE3087A79900BD9208 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				509DF40A3087A87B00BD9208 /* LessonBuilder.swift */,
+				509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */,
+				509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */,
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+		509DF3FF3087A7A300BD9208 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				509DF4083087A86500BD9208 /* ScheduleViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		509DF4003087A7AB00BD9208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5091E8C03061107000C83BDC /* ContentView.swift */,
+				509DF4063087A82500BD9208 /* LessonRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		509DF4013087A7B300BD9208 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				509DF4023087A7BE00BD9208 /* AppContainer.swift */,
+				5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		50A9206330879AD600CBD338 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50A9206430879AFD00CBD338 /* ScheduleItem.swift */,
+				50A9206630879B1900CBD338 /* LessonType.swift */,
+				50A9206830879B2900CBD338 /* Lessons.swift */,
+				50A9206A30879B3600CBD338 /* DaulySchedule.swift */,
+				50D984323088998C000570DB /* Weekday.swift */,
+				50D9843430889997000570DB /* LessonTime.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +356,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A9206530879AFD00CBD338 /* ScheduleItem.swift in Sources */,
+				50A9206930879B2900CBD338 /* Lessons.swift in Sources */,
+				509DF40F3087A89700BD9208 /* LessonFilterStrategy.swift in Sources */,
+				50A9206B30879B3600CBD338 /* DaulySchedule.swift in Sources */,
+				50A9206730879B1900CBD338 /* LessonType.swift in Sources */,
+				509DF3FD3087A79100BD9208 /* LinkOpening.swift in Sources */,
+				509DF4073087A82500BD9208 /* LessonRowView.swift in Sources */,
 				5091E8C13061107000C83BDC /* ContentView.swift in Sources */,
+				509DF4033087A7BE00BD9208 /* AppContainer.swift in Sources */,
+				50D98439308899CC000570DB /* ScheduleClock.swift in Sources */,
+				509DF3F53087A73D00BD9208 /* ScheduleRepository.swift in Sources */,
+				509DF40B3087A87B00BD9208 /* LessonBuilder.swift in Sources */,
+				509DF40D3087A88A00BD9208 /* LessonDTOAdapter.swift in Sources */,
+				50D9843530889997000570DB /* LessonTime.swift in Sources */,
+				509DF3F73087A75300BD9208 /* JSONScheduleRepository.swift in Sources */,
+				50D984333088998C000570DB /* Weekday.swift in Sources */,
 				5091E8BF3061107000C83BDC /* kpi_scheduleApp.swift in Sources */,
+				509DF4093087A86500BD9208 /* ScheduleViewModel.swift in Sources */,
+				509DF3F93087A76800BD9208 /* MockScheduleRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,17 +535,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "KPI Schedule";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +556,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,17 +568,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "KPI Schedule";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +589,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "bronievm.kpi-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
