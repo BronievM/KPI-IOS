@@ -2,12 +2,12 @@
 //  JSONScheduleRepository.swift
 //  kpi-schedule
 //
-//  Created by Maksym on 20.10.2026.
+//  Created by Maksym on 21.10.2026.
 //
 
 import Foundation
 
-/// A repository that loads schedule data from a JSON string and provides group and weekly schedule information.
+/// Парсить JSON у DTO і конвертує в доменні моделі через адаптер
 struct JSONScheduleRepository: ScheduleRepository {
     private let data: Data
     private let adapter = LessonDTOAdapter()
@@ -26,7 +26,7 @@ struct JSONScheduleRepository: ScheduleRepository {
     }
 
     func fetchWeeklySchedule(for group: String) throws -> [DailySchedule] {
-       let dtos = try JSONDecoder().decode([LessonDTO].self, from: data)
-       return adapter.adapt(dtos.filter { $0.group == group })
+        let dtos = try JSONDecoder().decode([LessonDTO].self, from: data)
+        return adapter.adapt(dtos.filter { $0.group == group })
     }
 }

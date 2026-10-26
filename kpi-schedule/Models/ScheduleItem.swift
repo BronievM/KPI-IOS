@@ -2,7 +2,7 @@
 //  ScheduleItem.swift
 //  kpi-schedule
 //
-//  Created by Maksym on 20.10.2026.
+//  Created by Maksym on 21.10.2026.
 //
 
 import Foundation

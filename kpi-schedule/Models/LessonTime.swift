@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Час початку пари (хвилини від початку доби).
 struct LessonTime: Comparable, Hashable {
+    /// Тривалість пари: 1 год 35 хв.
     static let pairDurationMinutes = 95
 
     let minutesFromMidnight: Int
@@ -16,6 +18,7 @@ struct LessonTime: Comparable, Hashable {
         self.minutesFromMidnight = hour * 60 + minute
     }
 
+    /// "08:30" або "08:30:00"
     init?(_ text: String) {
         let parts = text.split(separator: ":")
         guard parts.count >= 2,
@@ -28,6 +31,7 @@ struct LessonTime: Comparable, Hashable {
     var endText: String { Self.format(minutesFromMidnight + Self.pairDurationMinutes) }
     var rangeText: String { "\(startText)–\(endText)" }
 
+    /// Чи йде пара в момент `minutes` (хвилини від початку доби)
     func contains(minutes: Int) -> Bool {
         minutes >= minutesFromMidnight && minutes < minutesFromMidnight + Self.pairDurationMinutes
     }

@@ -2,11 +2,13 @@
 //  LessonDTOAdapter.swift
 //  kpi-schedule
 //
-//  Created by Maksym on 20.10.2026.
+//  Created by Maksym on 21.10.2026.
+//  Updated by Maksym on 25.10.2026.
 //
 
 import Foundation
 
+/// Зовнішній формат даних (як би його віддавав сервер розкладу)
 struct LessonDTO: Decodable {
     let group: String
     let day: String
@@ -18,9 +20,11 @@ struct LessonDTO: Decodable {
     let room: String?
     let online: Bool?
     let link: String?
+    /// Вибірковий предмет (необов'язкове поле; немає = обов'язковий)
+    let elective: Bool?
 }
 
-// Adapter
+/// PATTERN: Adapter.
 struct LessonDTOAdapter {
     func adapt(_ dtos: [LessonDTO]) -> [DailySchedule] {
         var days: [DailySchedule] = []
@@ -36,6 +40,7 @@ struct LessonDTOAdapter {
                 .room(dto.room)
                 .link(dto.link)
                 .start(dto.time.flatMap { LessonTime($0) })
+                .elective(dto.elective == true)
             if dto.online == true { builder.online() }
             let lesson = builder.build()
 
@@ -60,11 +65,11 @@ struct LessonDTOAdapter {
 
     private func lessonType(from text: String) -> LessonType? {
         switch text.lowercased() {
-        case "lecture", "lec":
+        case "lecture", "lec", "лек", "лекція":
             return .lecture
-        case "laboratory", "laboratory work", "lab work", "lab":
+        case "laboratory", "laboratory work", "lab work", "lab", "лаб", "лабораторна":
             return .lab
-        case "practical", "practice", "prac":
+        case "practical", "practice", "prac", "прак", "практика":
             return .practice
         default:
             return nil
@@ -73,6 +78,6 @@ struct LessonDTOAdapter {
 
     private func weekType(from text: String?) -> WeekType {
         let value = text?.lowercased() ?? ""
-        return (value == "second" || value == "2") ? .second : .first
+        return ["second", "2", "другий"].contains(value) ? .second : .first
     }
 }
