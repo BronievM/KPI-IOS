@@ -1,14 +1,14 @@
 //
-//  DaulySchedule.swift
+//  DailySchedule.swift
 //  kpi-schedule
 //
-//  Created by Maksym on 20.10.2026.
+//  Created by Maksym on 21.10.2026.
 //
 
 import Foundation
 
 class DailySchedule {
-        let dayOfWeek: String
+    let dayOfWeek: String
     let weekType: WeekType
     var lessons: [Lesson]
 
@@ -18,6 +18,7 @@ class DailySchedule {
         self.lessons = []
     }
 
+    /// Розпізнаний день тижня (nil, якщо назва невідома).
     var weekday: Weekday? { Weekday(name: dayOfWeek) }
 
     func addLesson(_ lesson: Lesson) {

@@ -7,30 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5091E8BF3061107000C83BDC /* kpi_scheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */; };
-		5091E8C13061107000C83BDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8C03061107000C83BDC /* ContentView.swift */; };
-		5091E8C33061107200C83BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E8C23061107200C83BDC /* Assets.xcassets */; };
-		5091E8C63061107200C83BDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E8C53061107200C83BDC /* Preview Assets.xcassets */; };
-		5091E8D03061107200C83BDC /* kpi_scheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */; };
+		5079894C308FC0330026CB48 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798943308FC0310026CB48 /* ScheduleItem.swift */; };
+		5079894D308FC0330026CB48 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798944308FC0310026CB48 /* Weekday.swift */; };
+		5079894E308FC0330026CB48 /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798945308FC0310026CB48 /* LessonType.swift */; };
+		5079894F308FC0330026CB48 /* DailySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798946308FC0320026CB48 /* DailySchedule.swift */; };
+		50798950308FC0330026CB48 /* TaskProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798947308FC0320026CB48 /* TaskProgress.swift */; };
+		50798951308FC0330026CB48 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798948308FC0320026CB48 /* Lesson.swift */; };
+		50798952308FC0330026CB48 /* LessonTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798949308FC0320026CB48 /* LessonTime.swift */; };
+		50798953308FC0330026CB48 /* DeadlineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079894A308FC0320026CB48 /* DeadlineInfo.swift */; };
+		50798954308FC0330026CB48 /* StudyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079894B308FC0320026CB48 /* StudyTask.swift */; };
+		50798959308FC0430026CB48 /* TaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798955308FC0430026CB48 /* TaskCoordinator.swift */; };
+		5079895A308FC0430026CB48 /* TaskRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798956308FC0430026CB48 /* TaskRoute.swift */; };
+		5079895B308FC0430026CB48 /* TaskScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798957308FC0430026CB48 /* TaskScreenFactory.swift */; };
+		5079895C308FC0430026CB48 /* TaskNavigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798958308FC0430026CB48 /* TaskNavigating.swift */; };
+		50798960308FC0510026CB48 /* LessonDTOAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079895D308FC0510026CB48 /* LessonDTOAdapter.swift */; };
+		50798961308FC0510026CB48 /* LessonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079895E308FC0510026CB48 /* LessonBuilder.swift */; };
+		50798962308FC0510026CB48 /* LessonFilterStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079895F308FC0510026CB48 /* LessonFilterStrategy.swift */; };
+		50798964308FC0600026CB48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50798963308FC0600026CB48 /* Preview Assets.xcassets */; };
+		50798971308FC0730026CB48 /* MockScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798965308FC0710026CB48 /* MockScheduleRepository.swift */; };
+		50798972308FC0730026CB48 /* ScheduleClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798966308FC0710026CB48 /* ScheduleClock.swift */; };
+		50798973308FC0730026CB48 /* SubjectsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798967308FC0710026CB48 /* SubjectsProviding.swift */; };
+		50798974308FC0730026CB48 /* JSONScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798968308FC0720026CB48 /* JSONScheduleRepository.swift */; };
+		50798975308FC0730026CB48 /* SampleSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798969308FC0720026CB48 /* SampleSchedule.swift */; };
+		50798976308FC0730026CB48 /* SampleTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079896A308FC0720026CB48 /* SampleTasks.swift */; };
+		50798977308FC0730026CB48 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079896C308FC0720026CB48 /* ScheduleRepository.swift */; };
+		50798978308FC0730026CB48 /* InMemoryTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079896D308FC0720026CB48 /* InMemoryTaskRepository.swift */; };
+		50798979308FC0730026CB48 /* LinkOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079896E308FC0720026CB48 /* LinkOpening.swift */; };
+		5079897A308FC0730026CB48 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079896F308FC0720026CB48 /* TaskRepository.swift */; };
+		5079897B308FC0730026CB48 /* FileTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798970308FC0730026CB48 /* FileTaskRepository.swift */; };
+		50798981308FC0890026CB48 /* TaskFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079897C308FC0880026CB48 /* TaskFormViewModel.swift */; };
+		50798982308FC0890026CB48 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079897D308FC0880026CB48 /* TaskDetailViewModel.swift */; };
+		50798983308FC0890026CB48 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079897E308FC0880026CB48 /* ScheduleViewModel.swift */; };
+		50798984308FC0890026CB48 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079897F308FC0890026CB48 /* HomeViewModel.swift */; };
+		50798985308FC0890026CB48 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798980308FC0890026CB48 /* TaskListViewModel.swift */; };
+		50798993308FC0990026CB48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798986308FC0980026CB48 /* ContentView.swift */; };
+		50798994308FC0990026CB48 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798987308FC0980026CB48 /* RootView.swift */; };
+		50798995308FC0990026CB48 /* ScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798988308FC0980026CB48 /* ScreenHeader.swift */; };
+		50798996308FC0990026CB48 /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798989308FC0980026CB48 /* LessonRowView.swift */; };
+		50798997308FC0990026CB48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898A308FC0990026CB48 /* HomeView.swift */; };
+		50798998308FC0990026CB48 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898B308FC0990026CB48 /* ProgressBarView.swift */; };
+		50798999308FC0990026CB48 /* TaskDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898C308FC0990026CB48 /* TaskDetailScreen.swift */; };
+		5079899A308FC0990026CB48 /* TaskFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898D308FC0990026CB48 /* TaskFlowView.swift */; };
+		5079899B308FC0990026CB48 /* TaskFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898E308FC0990026CB48 /* TaskFormScreen.swift */; };
+		5079899C308FC0990026CB48 /* TaskListComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079898F308FC0990026CB48 /* TaskListComponents.swift */; };
+		5079899D308FC0990026CB48 /* TaskListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798990308FC0990026CB48 /* TaskListScreen.swift */; };
+		5079899E308FC0990026CB48 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798991308FC0990026CB48 /* TaskRowView.swift */; };
+		507989AF308FE0640026CB48 /* ScheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */; };
+		507989B0308FE0640026CB48 /* TaskExtrasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AC308FE0640026CB48 /* TaskExtrasTests.swift */; };
+		507989B1308FE0640026CB48 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AD308FE0640026CB48 /* TaskTests.swift */; };
 		5091E8DA3061107200C83BDC /* kpi_scheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */; };
 		5091E8DC3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */; };
-		509DF3F53087A73D00BD9208 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */; };
-		509DF3F73087A75300BD9208 /* JSONScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */; };
-		509DF3F93087A76800BD9208 /* MockScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */; };
-		509DF3FD3087A79100BD9208 /* LinkOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF3FC3087A79100BD9208 /* LinkOpening.swift */; };
-		509DF4033087A7BE00BD9208 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4023087A7BE00BD9208 /* AppContainer.swift */; };
-		509DF4073087A82500BD9208 /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4063087A82500BD9208 /* LessonRowView.swift */; };
-		509DF4093087A86500BD9208 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF4083087A86500BD9208 /* ScheduleViewModel.swift */; };
-		509DF40B3087A87B00BD9208 /* LessonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40A3087A87B00BD9208 /* LessonBuilder.swift */; };
-		509DF40D3087A88A00BD9208 /* LessonDTOAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */; };
-		509DF40F3087A89700BD9208 /* LessonFilterStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */; };
-		50A9206530879AFD00CBD338 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206430879AFD00CBD338 /* ScheduleItem.swift */; };
-		50A9206730879B1900CBD338 /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206630879B1900CBD338 /* LessonType.swift */; };
-		50A9206930879B2900CBD338 /* Lessons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206830879B2900CBD338 /* Lessons.swift */; };
-		50A9206B30879B3600CBD338 /* DaulySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9206A30879B3600CBD338 /* DaulySchedule.swift */; };
-		50D984333088998C000570DB /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D984323088998C000570DB /* Weekday.swift */; };
-		50D9843530889997000570DB /* LessonTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D9843430889997000570DB /* LessonTime.swift */; };
-		50D98439308899CC000570DB /* ScheduleClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D98438308899CC000570DB /* ScheduleClock.swift */; };
+		50C550A6308FAB59009F6D8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5506E308FAB58009F6D8B /* Assets.xcassets */; };
+		50C550A7308FAB59009F6D8B /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5506F308FAB58009F6D8B /* AppContainer.swift */; };
+		50C550A8308FAB59009F6D8B /* kpi_scheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C55070308FAB58009F6D8B /* kpi_scheduleApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,33 +80,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50798943308FC0310026CB48 /* ScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
+		50798944308FC0310026CB48 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		50798945308FC0310026CB48 /* LessonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
+		50798946308FC0320026CB48 /* DailySchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySchedule.swift; sourceTree = "<group>"; };
+		50798947308FC0320026CB48 /* TaskProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskProgress.swift; sourceTree = "<group>"; };
+		50798948308FC0320026CB48 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		50798949308FC0320026CB48 /* LessonTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonTime.swift; sourceTree = "<group>"; };
+		5079894A308FC0320026CB48 /* DeadlineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadlineInfo.swift; sourceTree = "<group>"; };
+		5079894B308FC0320026CB48 /* StudyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTask.swift; sourceTree = "<group>"; };
+		50798955308FC0430026CB48 /* TaskCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCoordinator.swift; sourceTree = "<group>"; };
+		50798956308FC0430026CB48 /* TaskRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRoute.swift; sourceTree = "<group>"; };
+		50798957308FC0430026CB48 /* TaskScreenFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskScreenFactory.swift; sourceTree = "<group>"; };
+		50798958308FC0430026CB48 /* TaskNavigating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNavigating.swift; sourceTree = "<group>"; };
+		5079895D308FC0510026CB48 /* LessonDTOAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDTOAdapter.swift; sourceTree = "<group>"; };
+		5079895E308FC0510026CB48 /* LessonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonBuilder.swift; sourceTree = "<group>"; };
+		5079895F308FC0510026CB48 /* LessonFilterStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonFilterStrategy.swift; sourceTree = "<group>"; };
+		50798963308FC0600026CB48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		50798965308FC0710026CB48 /* MockScheduleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockScheduleRepository.swift; sourceTree = "<group>"; };
+		50798966308FC0710026CB48 /* ScheduleClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClock.swift; sourceTree = "<group>"; };
+		50798967308FC0710026CB48 /* SubjectsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsProviding.swift; sourceTree = "<group>"; };
+		50798968308FC0720026CB48 /* JSONScheduleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONScheduleRepository.swift; sourceTree = "<group>"; };
+		50798969308FC0720026CB48 /* SampleSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSchedule.swift; sourceTree = "<group>"; };
+		5079896A308FC0720026CB48 /* SampleTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTasks.swift; sourceTree = "<group>"; };
+		5079896C308FC0720026CB48 /* ScheduleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
+		5079896D308FC0720026CB48 /* InMemoryTaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryTaskRepository.swift; sourceTree = "<group>"; };
+		5079896E308FC0720026CB48 /* LinkOpening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpening.swift; sourceTree = "<group>"; };
+		5079896F308FC0720026CB48 /* TaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		50798970308FC0730026CB48 /* FileTaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTaskRepository.swift; sourceTree = "<group>"; };
+		5079897C308FC0880026CB48 /* TaskFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormViewModel.swift; sourceTree = "<group>"; };
+		5079897D308FC0880026CB48 /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
+		5079897E308FC0880026CB48 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		5079897F308FC0890026CB48 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		50798980308FC0890026CB48 /* TaskListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		50798986308FC0980026CB48 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		50798987308FC0980026CB48 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		50798988308FC0980026CB48 /* ScreenHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenHeader.swift; sourceTree = "<group>"; };
+		50798989308FC0980026CB48 /* LessonRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
+		5079898A308FC0990026CB48 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5079898B308FC0990026CB48 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		5079898C308FC0990026CB48 /* TaskDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailScreen.swift; sourceTree = "<group>"; };
+		5079898D308FC0990026CB48 /* TaskFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFlowView.swift; sourceTree = "<group>"; };
+		5079898E308FC0990026CB48 /* TaskFormScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormScreen.swift; sourceTree = "<group>"; };
+		5079898F308FC0990026CB48 /* TaskListComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListComponents.swift; sourceTree = "<group>"; };
+		50798990308FC0990026CB48 /* TaskListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListScreen.swift; sourceTree = "<group>"; };
+		50798991308FC0990026CB48 /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
+		507989AC308FE0640026CB48 /* TaskExtrasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExtrasTests.swift; sourceTree = "<group>"; };
+		507989AD308FE0640026CB48 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		5091E8BB3061107000C83BDC /* kpi-schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kpi-schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleApp.swift; sourceTree = "<group>"; };
-		5091E8C03061107000C83BDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5091E8C23061107200C83BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5091E8C53061107200C83BDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5091E8CB3061107200C83BDC /* kpi-scheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleTests.swift; sourceTree = "<group>"; };
 		5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITests.swift; sourceTree = "<group>"; };
 		5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpi_scheduleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
-		509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONScheduleRepository.swift; sourceTree = "<group>"; };
-		509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScheduleRepository.swift; sourceTree = "<group>"; };
-		509DF3FC3087A79100BD9208 /* LinkOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkOpening.swift; sourceTree = "<group>"; };
-		509DF4023087A7BE00BD9208 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		509DF4063087A82500BD9208 /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
-		509DF4083087A86500BD9208 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
-		509DF40A3087A87B00BD9208 /* LessonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBuilder.swift; sourceTree = "<group>"; };
-		509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDTOAdapter.swift; sourceTree = "<group>"; };
-		509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFilterStrategy.swift; sourceTree = "<group>"; };
-		50A9206430879AFD00CBD338 /* ScheduleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
-		50A9206630879B1900CBD338 /* LessonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
-		50A9206830879B2900CBD338 /* Lessons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lessons.swift; sourceTree = "<group>"; };
-		50A9206A30879B3600CBD338 /* DaulySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaulySchedule.swift; sourceTree = "<group>"; };
-		50D984323088998C000570DB /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
-		50D9843430889997000570DB /* LessonTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTime.swift; sourceTree = "<group>"; };
-		50D98438308899CC000570DB /* ScheduleClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleClock.swift; sourceTree = "<group>"; };
+		50C5506E308FAB58009F6D8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50C5506F308FAB58009F6D8B /* AppContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		50C55070308FAB58009F6D8B /* kpi_scheduleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kpi_scheduleApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +163,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5079896B308FC0720026CB48 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				50798969308FC0720026CB48 /* SampleSchedule.swift */,
+				5079896A308FC0720026CB48 /* SampleTasks.swift */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		50798992308FC0990026CB48 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				5079898B308FC0990026CB48 /* ProgressBarView.swift */,
+				5079898C308FC0990026CB48 /* TaskDetailScreen.swift */,
+				5079898D308FC0990026CB48 /* TaskFlowView.swift */,
+				5079898E308FC0990026CB48 /* TaskFormScreen.swift */,
+				5079898F308FC0990026CB48 /* TaskListComponents.swift */,
+				50798990308FC0990026CB48 /* TaskListScreen.swift */,
+				50798991308FC0990026CB48 /* TaskRowView.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		5091E8B23061107000C83BDC = {
 			isa = PBXGroup;
 			children = (
@@ -128,30 +209,25 @@
 		5091E8BD3061107000C83BDC /* kpi-schedule */ = {
 			isa = PBXGroup;
 			children = (
-				509DF4013087A7B300BD9208 /* App */,
-				509DF4003087A7AB00BD9208 /* Views */,
-				509DF3FF3087A7A300BD9208 /* ViewModels */,
-				509DF3FE3087A79900BD9208 /* Patterns */,
-				509DF3F33087A71700BD9208 /* Services */,
-				50A9206330879AD600CBD338 /* Models */,
-				5091E8C23061107200C83BDC /* Assets.xcassets */,
-				5091E8C43061107200C83BDC /* Preview Content */,
+				50C55071308FAB58009F6D8B /* App */,
+				50C5506E308FAB58009F6D8B /* Assets.xcassets */,
+				50C5506D308FAB58009F6D8B /* Models */,
+				50C55089308FAB58009F6D8B /* Navigation */,
+				50C5508D308FAB59009F6D8B /* Patterns */,
+				50C55063308FAB57009F6D8B /* Preview Content */,
+				50C5507E308FAB58009F6D8B /* Services */,
+				50C55084308FAB58009F6D8B /* ViewModels */,
+				50C5509B308FAB59009F6D8B /* Views */,
 			);
 			path = "kpi-schedule";
-			sourceTree = "<group>";
-		};
-		5091E8C43061107200C83BDC /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5091E8C53061107200C83BDC /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5091E8CE3061107200C83BDC /* kpi-scheduleTests */ = {
 			isa = PBXGroup;
 			children = (
-				5091E8CF3061107200C83BDC /* kpi_scheduleTests.swift */,
+				507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */,
+				507989AC308FE0640026CB48 /* TaskExtrasTests.swift */,
+				507989AD308FE0640026CB48 /* TaskTests.swift */,
 			);
 			path = "kpi-scheduleTests";
 			sourceTree = "<group>";
@@ -165,65 +241,100 @@
 			path = "kpi-scheduleUITests";
 			sourceTree = "<group>";
 		};
-		509DF3F33087A71700BD9208 /* Services */ = {
+		50C55063308FAB57009F6D8B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				509DF3F43087A73D00BD9208 /* ScheduleRepository.swift */,
-				509DF3F63087A75300BD9208 /* JSONScheduleRepository.swift */,
-				509DF3F83087A76800BD9208 /* MockScheduleRepository.swift */,
-				509DF3FC3087A79100BD9208 /* LinkOpening.swift */,
-				50D98438308899CC000570DB /* ScheduleClock.swift */,
+				50798963308FC0600026CB48 /* Preview Assets.xcassets */,
 			);
-			path = Services;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		509DF3FE3087A79900BD9208 /* Patterns */ = {
+		50C5506D308FAB58009F6D8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				509DF40A3087A87B00BD9208 /* LessonBuilder.swift */,
-				509DF40C3087A88A00BD9208 /* LessonDTOAdapter.swift */,
-				509DF40E3087A89700BD9208 /* LessonFilterStrategy.swift */,
+				50798946308FC0320026CB48 /* DailySchedule.swift */,
+				5079894A308FC0320026CB48 /* DeadlineInfo.swift */,
+				50798948308FC0320026CB48 /* Lesson.swift */,
+				50798949308FC0320026CB48 /* LessonTime.swift */,
+				50798945308FC0310026CB48 /* LessonType.swift */,
+				50798943308FC0310026CB48 /* ScheduleItem.swift */,
+				5079894B308FC0320026CB48 /* StudyTask.swift */,
+				50798947308FC0320026CB48 /* TaskProgress.swift */,
+				50798944308FC0310026CB48 /* Weekday.swift */,
 			);
-			path = Patterns;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		509DF3FF3087A7A300BD9208 /* ViewModels */ = {
+		50C55071308FAB58009F6D8B /* App */ = {
 			isa = PBXGroup;
 			children = (
-				509DF4083087A86500BD9208 /* ScheduleViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		509DF4003087A7AB00BD9208 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5091E8C03061107000C83BDC /* ContentView.swift */,
-				509DF4063087A82500BD9208 /* LessonRowView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		509DF4013087A7B300BD9208 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				509DF4023087A7BE00BD9208 /* AppContainer.swift */,
-				5091E8BE3061107000C83BDC /* kpi_scheduleApp.swift */,
+				50C5506F308FAB58009F6D8B /* AppContainer.swift */,
+				50C55070308FAB58009F6D8B /* kpi_scheduleApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		50A9206330879AD600CBD338 /* Models */ = {
+		50C5507E308FAB58009F6D8B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				50A9206430879AFD00CBD338 /* ScheduleItem.swift */,
-				50A9206630879B1900CBD338 /* LessonType.swift */,
-				50A9206830879B2900CBD338 /* Lessons.swift */,
-				50A9206A30879B3600CBD338 /* DaulySchedule.swift */,
-				50D984323088998C000570DB /* Weekday.swift */,
-				50D9843430889997000570DB /* LessonTime.swift */,
+				50798970308FC0730026CB48 /* FileTaskRepository.swift */,
+				5079896D308FC0720026CB48 /* InMemoryTaskRepository.swift */,
+				50798968308FC0720026CB48 /* JSONScheduleRepository.swift */,
+				5079896E308FC0720026CB48 /* LinkOpening.swift */,
+				50798965308FC0710026CB48 /* MockScheduleRepository.swift */,
+				50798966308FC0710026CB48 /* ScheduleClock.swift */,
+				5079896C308FC0720026CB48 /* ScheduleRepository.swift */,
+				50798967308FC0710026CB48 /* SubjectsProviding.swift */,
+				5079896F308FC0720026CB48 /* TaskRepository.swift */,
+				5079896B308FC0720026CB48 /* TestData */,
 			);
-			path = Models;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		50C55084308FAB58009F6D8B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5079897F308FC0890026CB48 /* HomeViewModel.swift */,
+				5079897E308FC0880026CB48 /* ScheduleViewModel.swift */,
+				5079897D308FC0880026CB48 /* TaskDetailViewModel.swift */,
+				5079897C308FC0880026CB48 /* TaskFormViewModel.swift */,
+				50798980308FC0890026CB48 /* TaskListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		50C55089308FAB58009F6D8B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				50798955308FC0430026CB48 /* TaskCoordinator.swift */,
+				50798958308FC0430026CB48 /* TaskNavigating.swift */,
+				50798956308FC0430026CB48 /* TaskRoute.swift */,
+				50798957308FC0430026CB48 /* TaskScreenFactory.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		50C5508D308FAB59009F6D8B /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				5079895E308FC0510026CB48 /* LessonBuilder.swift */,
+				5079895D308FC0510026CB48 /* LessonDTOAdapter.swift */,
+				5079895F308FC0510026CB48 /* LessonFilterStrategy.swift */,
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+		50C5509B308FAB59009F6D8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				50798986308FC0980026CB48 /* ContentView.swift */,
+				5079898A308FC0990026CB48 /* HomeView.swift */,
+				50798989308FC0980026CB48 /* LessonRowView.swift */,
+				50798987308FC0980026CB48 /* RootView.swift */,
+				50798988308FC0980026CB48 /* ScreenHeader.swift */,
+				50798992308FC0990026CB48 /* Tasks */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +441,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5091E8C63061107200C83BDC /* Preview Assets.xcassets in Resources */,
-				5091E8C33061107200C83BDC /* Assets.xcassets in Resources */,
+				50C550A6308FAB59009F6D8B /* Assets.xcassets in Resources */,
+				50798964308FC0600026CB48 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,25 +467,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50A9206530879AFD00CBD338 /* ScheduleItem.swift in Sources */,
-				50A9206930879B2900CBD338 /* Lessons.swift in Sources */,
-				509DF40F3087A89700BD9208 /* LessonFilterStrategy.swift in Sources */,
-				50A9206B30879B3600CBD338 /* DaulySchedule.swift in Sources */,
-				50A9206730879B1900CBD338 /* LessonType.swift in Sources */,
-				509DF3FD3087A79100BD9208 /* LinkOpening.swift in Sources */,
-				509DF4073087A82500BD9208 /* LessonRowView.swift in Sources */,
-				5091E8C13061107000C83BDC /* ContentView.swift in Sources */,
-				509DF4033087A7BE00BD9208 /* AppContainer.swift in Sources */,
-				50D98439308899CC000570DB /* ScheduleClock.swift in Sources */,
-				509DF3F53087A73D00BD9208 /* ScheduleRepository.swift in Sources */,
-				509DF40B3087A87B00BD9208 /* LessonBuilder.swift in Sources */,
-				509DF40D3087A88A00BD9208 /* LessonDTOAdapter.swift in Sources */,
-				50D9843530889997000570DB /* LessonTime.swift in Sources */,
-				509DF3F73087A75300BD9208 /* JSONScheduleRepository.swift in Sources */,
-				50D984333088998C000570DB /* Weekday.swift in Sources */,
-				5091E8BF3061107000C83BDC /* kpi_scheduleApp.swift in Sources */,
-				509DF4093087A86500BD9208 /* ScheduleViewModel.swift in Sources */,
-				509DF3F93087A76800BD9208 /* MockScheduleRepository.swift in Sources */,
+				5079894D308FC0330026CB48 /* Weekday.swift in Sources */,
+				50798981308FC0890026CB48 /* TaskFormViewModel.swift in Sources */,
+				50798953308FC0330026CB48 /* DeadlineInfo.swift in Sources */,
+				50798982308FC0890026CB48 /* TaskDetailViewModel.swift in Sources */,
+				50798951308FC0330026CB48 /* Lesson.swift in Sources */,
+				50798979308FC0730026CB48 /* LinkOpening.swift in Sources */,
+				50798959308FC0430026CB48 /* TaskCoordinator.swift in Sources */,
+				50798972308FC0730026CB48 /* ScheduleClock.swift in Sources */,
+				5079895C308FC0430026CB48 /* TaskNavigating.swift in Sources */,
+				5079899B308FC0990026CB48 /* TaskFormScreen.swift in Sources */,
+				50C550A8308FAB59009F6D8B /* kpi_scheduleApp.swift in Sources */,
+				50798960308FC0510026CB48 /* LessonDTOAdapter.swift in Sources */,
+				50798977308FC0730026CB48 /* ScheduleRepository.swift in Sources */,
+				5079899D308FC0990026CB48 /* TaskListScreen.swift in Sources */,
+				50798973308FC0730026CB48 /* SubjectsProviding.swift in Sources */,
+				50798954308FC0330026CB48 /* StudyTask.swift in Sources */,
+				5079894E308FC0330026CB48 /* LessonType.swift in Sources */,
+				50798997308FC0990026CB48 /* HomeView.swift in Sources */,
+				5079894F308FC0330026CB48 /* DailySchedule.swift in Sources */,
+				50798993308FC0990026CB48 /* ContentView.swift in Sources */,
+				5079895A308FC0430026CB48 /* TaskRoute.swift in Sources */,
+				5079897A308FC0730026CB48 /* TaskRepository.swift in Sources */,
+				50C550A7308FAB59009F6D8B /* AppContainer.swift in Sources */,
+				5079895B308FC0430026CB48 /* TaskScreenFactory.swift in Sources */,
+				50798984308FC0890026CB48 /* HomeViewModel.swift in Sources */,
+				5079899C308FC0990026CB48 /* TaskListComponents.swift in Sources */,
+				5079897B308FC0730026CB48 /* FileTaskRepository.swift in Sources */,
+				50798950308FC0330026CB48 /* TaskProgress.swift in Sources */,
+				50798952308FC0330026CB48 /* LessonTime.swift in Sources */,
+				50798971308FC0730026CB48 /* MockScheduleRepository.swift in Sources */,
+				50798999308FC0990026CB48 /* TaskDetailScreen.swift in Sources */,
+				50798985308FC0890026CB48 /* TaskListViewModel.swift in Sources */,
+				50798978308FC0730026CB48 /* InMemoryTaskRepository.swift in Sources */,
+				50798998308FC0990026CB48 /* ProgressBarView.swift in Sources */,
+				50798961308FC0510026CB48 /* LessonBuilder.swift in Sources */,
+				50798976308FC0730026CB48 /* SampleTasks.swift in Sources */,
+				5079899E308FC0990026CB48 /* TaskRowView.swift in Sources */,
+				50798962308FC0510026CB48 /* LessonFilterStrategy.swift in Sources */,
+				50798995308FC0990026CB48 /* ScreenHeader.swift in Sources */,
+				5079894C308FC0330026CB48 /* ScheduleItem.swift in Sources */,
+				50798994308FC0990026CB48 /* RootView.swift in Sources */,
+				50798983308FC0890026CB48 /* ScheduleViewModel.swift in Sources */,
+				50798975308FC0730026CB48 /* SampleSchedule.swift in Sources */,
+				50798974308FC0730026CB48 /* JSONScheduleRepository.swift in Sources */,
+				50798996308FC0990026CB48 /* LessonRowView.swift in Sources */,
+				5079899A308FC0990026CB48 /* TaskFlowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +520,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5091E8D03061107200C83BDC /* kpi_scheduleTests.swift in Sources */,
+				507989AF308FE0640026CB48 /* ScheduleViewModelTests.swift in Sources */,
+				507989B0308FE0640026CB48 /* TaskExtrasTests.swift in Sources */,
+				507989B1308FE0640026CB48 /* TaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,10 +675,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R246VXBVBJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "KPI Schedule";
@@ -568,10 +709,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kpi-schedule/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R246VXBVBJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "KPI Schedule";

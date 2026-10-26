@@ -3,6 +3,7 @@
 //  kpi-schedule
 //
 //  Originally created by Maksym on 20.10.2026.
+//  Updated by Maksym on 25.10.2026.
 //
 
 import Foundation
@@ -33,6 +34,10 @@ final class ScheduleViewModel: ObservableObject {
     @Published var filterOption: FilterOption = .all {
         didSet { rebuildSections() }
     }
+    
+    @Published var subjectFilter: String? = nil {
+        didSet { rebuildSections() }
+    }
 
     private let repository: ScheduleRepository
     private let linkOpener: LinkOpening
@@ -43,8 +48,6 @@ final class ScheduleViewModel: ObservableObject {
         self.repository = repository
         self.linkOpener = linkOpener
         self.clock = clock
-
-        // На старті показуємо поточний тиждень.
         let week = clock.snapshot().week
         self.currentWeek = week
         self.selectedWeek = week
@@ -57,7 +60,7 @@ final class ScheduleViewModel: ObservableObject {
         } catch {
             groups = []
             days = []
-            errorMessage = "Error: \(error.localizedDescription)"
+            errorMessage = "Помилка: \(error.localizedDescription)"
             rebuildSections()
             return
         }
@@ -65,13 +68,16 @@ final class ScheduleViewModel: ObservableObject {
         if groups.contains(selectedGroup) {
             loadSchedule()
         } else if let first = groups.first {
-            selectedGroup = first         
+            selectedGroup = first
         } else {
             days = []
             rebuildSections()
         }
     }
 
+
+    /// Усі пари групи без фільтрів (для «Головної»)
+    var allDays: [DailySchedule] { days }
 
     func refreshNow() {
         rebuildSections()
@@ -88,14 +94,14 @@ final class ScheduleViewModel: ObservableObject {
             errorMessage = nil
         } catch {
             days = []
-            errorMessage = "Error: \(error.localizedDescription)"
+            errorMessage = "Помилка: \(error.localizedDescription)"
         }
         rebuildSections()
     }
 
     private func rebuildSections() {
         let now = clock.snapshot()
-        let strategy = filterOption.strategy
+        let typeStrategy = filterOption.strategy
         let isCurrentWeekSelected = (selectedWeek == now.week)
         var currentID: UUID?
 
@@ -108,7 +114,13 @@ final class ScheduleViewModel: ObservableObject {
                     currentID = day.lessons.first { $0.startTime?.contains(minutes: now.minutes) == true }?.id
                 }
 
-                let filtered = strategy.apply(to: day.lessons)
+                var filtered = typeStrategy.apply(to: day.lessons)
+
+                if let subject = subjectFilter {
+                    let subjectStrategy = SubjectFilter(subjectName: subject)
+                    filtered = subjectStrategy.apply(to: filtered)
+                }
+
                 guard !filtered.isEmpty else { return nil }
                 return DaySection(id: day.dayOfWeek, title: day.dayOfWeek, lessons: filtered, isToday: isToday)
             }
@@ -116,5 +128,13 @@ final class ScheduleViewModel: ObservableObject {
         currentWeek = now.week
         currentLessonID = currentID
         sections = result
+    }
+    
+    func filterBySubject(_ subject: String) {
+        self.subjectFilter = subject
+    }
+
+    func clearSubjectFilter() {
+        self.subjectFilter = nil
     }
 }

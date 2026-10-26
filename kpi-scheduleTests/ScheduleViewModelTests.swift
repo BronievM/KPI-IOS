@@ -1,10 +1,3 @@
-//
-//  kpi_scheduleTests.swift
-//  kpi-scheduleTests
-//
-//  Created by Maksym on 21.09.2026.
-//
-
 import XCTest
 @testable import kpi_schedule
 
@@ -19,6 +12,7 @@ private struct FailingRepository: ScheduleRepository {
     func fetchWeeklySchedule(for group: String) throws -> [DailySchedule] { throw Boom() }
 }
 
+/// Годинник із фіксованим "зараз": середа, 08:40, 1-й тиждень.
 private struct FixedClock: ScheduleClock {
     var week: WeekType = .first
     var weekday: Weekday? = .wednesday
@@ -57,6 +51,8 @@ final class ScheduleViewModelTests: XCTestCase {
         return vm
     }
 
+    // MARK: група
+
     func testLoadSelectsFirstGroupAndBuildsSections() {
         let vm = makeSUT()
         XCTAssertEqual(vm.groups, ["A-1", "A-2"])
@@ -69,6 +65,8 @@ final class ScheduleViewModelTests: XCTestCase {
         vm.selectedGroup = "A-2"
         XCTAssertEqual(vm.sections.map(\.title), ["Tuesday"])
     }
+
+    // MARK: тиждень
 
     func testDefaultWeekFollowsClock() {
         let vm = makeSUT(clock: FixedClock(week: .second))
@@ -84,9 +82,10 @@ final class ScheduleViewModelTests: XCTestCase {
         XCTAssertEqual(vm.sections.flatMap(\.lessons).map(\.subjectName), ["E"])
     }
 
+    // MARK: сьогодні / поточна пара
 
     func testTodayAndCurrentLessonAreMarked() {
-        let vm = makeSUT()
+        let vm = makeSUT()   // середа, 08:40, 1-й тиждень
         let wednesday = vm.sections.first { $0.title == "Wednesday" }
         XCTAssertEqual(wednesday?.isToday, true)
         XCTAssertEqual(vm.sections.first { $0.title == "Monday" }?.isToday, false)
@@ -94,7 +93,7 @@ final class ScheduleViewModelTests: XCTestCase {
     }
 
     func testNoCurrentLessonBetweenPairs() {
-        let vm = makeSUT(clock: FixedClock(minutes: 10 * 60 + 15))
+        let vm = makeSUT(clock: FixedClock(minutes: 10 * 60 + 15))   // 10:15 — вже після B, ще до C
         XCTAssertNil(vm.currentLessonID)
         XCTAssertEqual(vm.sections.first { $0.title == "Wednesday" }?.isToday, true)
     }
@@ -106,6 +105,7 @@ final class ScheduleViewModelTests: XCTestCase {
         XCTAssertNil(vm.currentLessonID)
     }
 
+    // MARK: фільтри, посилання, помилки
 
     func testLabFilterHidesDaysWithoutLabs() {
         let vm = makeSUT()
@@ -117,13 +117,13 @@ final class ScheduleViewModelTests: XCTestCase {
     func testOnlineFilter() {
         let vm = makeSUT()
         vm.filterOption = .online
-        XCTAssertEqual(vm.sections.flatMap(\.lessons).count, 2)
+        XCTAssertEqual(vm.sections.flatMap(\.lessons).count, 2)   // A і C
     }
 
     func testOpenCallsOpenerOnlyWhenLinkExists() {
         let spy = SpyLinkOpener()
         let vm = makeSUT(opener: spy)
-        let lessons = vm.sections.flatMap(\.lessons)
+        let lessons = vm.sections.flatMap(\.lessons)   // A, B, C
 
         vm.open(lessons[0])
         XCTAssertTrue(spy.opened.isEmpty)
@@ -142,21 +142,44 @@ final class ScheduleViewModelTests: XCTestCase {
 
 final class LessonDTOAdapterTests: XCTestCase {
 
+    /// Власні дані тесту: рядки навмисно перемішані (порядок днів і часу), щоб перевірити сортування.
+    /// Тест не залежить від демо-розкладу `SampleScheduleData`, який можна змінювати.
+    private static let json = """
+    [
+      {"group":"G","day":"Thursday","week":"first","time":"08:30","subject":"Th","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Tuesday","week":"first","time":"12:20","subject":"Lab2","teacher":"T","type":"Laboratory","room":"1-1"},
+      {"group":"G","day":"Monday","week":"first","time":"12:20","subject":"Mon3","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Monday","week":"first","time":"08:30","subject":"Computer Graphics and Multimedia","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Monday","week":"first","time":"10:25","subject":"Mon2","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Wednesday","week":"first","time":"10:25","subject":"Wed2","teacher":"T","type":"Laboratory","room":"18-200"},
+      {"group":"G","day":"Wednesday","week":"first","time":"08:30","subject":"Wed1","teacher":"T","type":"Laboratory","online":true,"link":"https://github.com/BronievM/KPI-IOS"},
+      {"group":"G","day":"Tuesday","week":"first","time":"10:25","subject":"Lab1","teacher":"T","type":"Laboratory","room":"1-2"},
+      {"group":"G","day":"Monday","week":"second","time":"08:30","subject":"S1","teacher":"T","type":"Practical","room":"2-1"},
+      {"group":"G","day":"Tuesday","week":"second","time":"08:30","subject":"S2","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Wednesday","week":"second","time":"08:30","subject":"S3","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Thursday","week":"second","time":"08:30","subject":"S4","teacher":"T","type":"Lecture","online":true},
+      {"group":"G","day":"Saturday","week":"second","time":"14:15","subject":"S5","teacher":"T","type":"Lecture","online":true}
+    ]
+    """
+
+    private func allDays() throws -> [DailySchedule] {
+        try JSONScheduleRepository(json: Self.json).fetchWeeklySchedule(for: "G")
+    }
+
     private func firstWeekDays() throws -> [DailySchedule] {
-        let repo = JSONScheduleRepository(json: SampleScheduleData.json)
-        return try repo.fetchWeeklySchedule(for: "ІО-42").filter { $0.weekType == .first }
+        try allDays().filter { $0.weekType == .first }
     }
 
     func testJSONRepositoryReturnsGroups() throws {
-        let repo = JSONScheduleRepository(json: SampleScheduleData.json)
-        XCTAssertEqual(try repo.fetchGroups(), ["ІО-42"])
+        XCTAssertEqual(try JSONScheduleRepository(json: Self.json).fetchGroups(), ["G"])
+        // демо-дані застосунку теж читаються
+        XCTAssertFalse(try JSONScheduleRepository(json: SampleScheduleData.json).fetchGroups().isEmpty)
     }
 
     func testAdapterKeepsRealTypesFromJSON() throws {
         let tuesday = try firstWeekDays().first { $0.dayOfWeek == "Tuesday" }
         XCTAssertEqual(tuesday?.lessons.map(\.type), [.lab, .lab])
-        let all = try JSONScheduleRepository(json: SampleScheduleData.json).fetchWeeklySchedule(for: "ІО-42")
-        XCTAssertTrue(all.flatMap(\.lessons).contains { $0.type == .practice })
+        XCTAssertTrue(try allDays().flatMap(\.lessons).contains { $0.type == .practice })
     }
 
     func testAdapterSortsDaysAndLessons() throws {
@@ -167,21 +190,20 @@ final class LessonDTOAdapterTests: XCTestCase {
     }
 
     func testAdapterSeparatesWeeks() throws {
-        let all = try JSONScheduleRepository(json: SampleScheduleData.json).fetchWeeklySchedule(for: "ІО-42")
+        let all = try allDays()
         XCTAssertEqual(all.filter { $0.weekType == .first }.count, 4)
         XCTAssertEqual(all.filter { $0.weekType == .second }.count, 5)
     }
 
     func testAdapterMapsLinkAndRoom() throws {
-        let days = try firstWeekDays()
-        let wednesday = days.first { $0.dayOfWeek == "Wednesday" }
+        let wednesday = try firstWeekDays().first { $0.dayOfWeek == "Wednesday" }
         XCTAssertEqual(wednesday?.lessons.first?.link, "https://github.com/BronievM/KPI-IOS")
         XCTAssertEqual(wednesday?.lessons.last?.room, "18-200")
     }
 
     func testAdapterSkipsUnknownType() {
         let dto = LessonDTO(group: "G", day: "Monday", week: nil, subject: "X", teacher: "T",
-                            type: "Seminar", time: nil, room: nil, online: nil, link: nil)
+                            type: "Seminar", time: nil, room: nil, online: nil, link: nil, elective: nil)
         XCTAssertTrue(LessonDTOAdapter().adapt([dto]).isEmpty)
     }
 
@@ -223,10 +245,10 @@ final class SystemScheduleClockTests: XCTestCase {
     }
 
     func testWeeksAlternate() {
-        XCTAssertEqual(snapshot(2026, 9, 20, 9, 0).week, .first)
-        XCTAssertEqual(snapshot(2026, 10, 19, 9, 0).week, .second)
+        XCTAssertEqual(snapshot(2026, 9, 20, 9, 0).week, .first)    // неділя першого тижня
+        XCTAssertEqual(snapshot(2026, 10, 19, 9, 0).week, .second)  // пн 19.10 — 2-й тиждень (за реальним розкладом)
         XCTAssertEqual(snapshot(2026, 10, 26, 9, 0).week, .first)
-        XCTAssertEqual(snapshot(2026, 9, 10, 9, 0).week, .second)  
+        XCTAssertEqual(snapshot(2026, 9, 10, 9, 0).week, .second)   // до початку відліку
     }
 
     func testWeekdayAndMinutes() {
