@@ -12,9 +12,20 @@ struct TimeSnapshot {
     let week: WeekType
     let weekday: Weekday?
     let minutes: Int
+    
+    /// Початок сьогоднішнього дня (nil у тестах, де дата не важлива: тоді «спец. пари» не відсікаються)
+       var today: Date? = nil
+
+       /// Ключ дати `yyyy-MM-dd` для дня зі зсувом від сьогодні (0 = сьогодні, 7 = через тиждень)
+       func dateKey(addingDays offset: Int = 0) -> String? {
+           guard let today else { return nil }
+           let calendar = SystemScheduleClock.kyivCalendar
+           guard let date = calendar.date(byAdding: .day, value: offset, to: today) else { return nil }
+           return LessonDates.key(for: date, calendar: calendar)
+       }
 }
 
-/// Провайдер часу для можливості підміни `Date()` у тестах.
+/// Провайдер часу для можливості підміни Date() у тестах.
 protocol ScheduleClock {
     func snapshot() -> TimeSnapshot
 }
@@ -52,7 +63,8 @@ struct SystemScheduleClock: ScheduleClock {
         return TimeSnapshot(
             week: week,
             weekday: Weekday(calendarWeekday: parts.weekday ?? 0),
-            minutes: (parts.hour ?? 0) * 60 + (parts.minute ?? 0)
+            minutes: (parts.hour ?? 0) * 60 + (parts.minute ?? 0),
+            today: today
         )
     }
 }

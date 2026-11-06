@@ -3,7 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 21.10.2026.
-//  Updated by Maksym on 25.10.2026.
+//  Updated by Maksym on 06.10.2026.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ final class LessonBuilder {
     private var link: String?
     private var startTime: LessonTime?
     private var isElective = false
+    private var dates: [String] = []
 
     @discardableResult func subject(_ value: String) -> Self { subjectName = value; return self }
     @discardableResult func teacher(_ value: String) -> Self { teacher = value; return self }
@@ -27,6 +28,8 @@ final class LessonBuilder {
     @discardableResult func link(_ value: String?) -> Self { link = value; return self }
     @discardableResult func start(_ value: LessonTime?) -> Self { startTime = value; return self }
     @discardableResult func elective(_ value: Bool = true) -> Self { isElective = value; return self }
+    /// Дати «спец. пари» (порожньо = щотижня)
+    @discardableResult func dates(_ value: [String]) -> Self { dates = value; return self }
 
     /// Позначає пару онлайн; якщо передано link, зберігає його.
     @discardableResult func online(link: String? = nil) -> Self {
@@ -36,7 +39,7 @@ final class LessonBuilder {
     }
 
     func build() -> Lesson {
-        Lesson(subjectName: subjectName, teacher: teacher, type: type,
-               room: room, isOnline: isOnline, link: link, startTime: startTime, isElective: isElective)
-    }
+           Lesson(subjectName: subjectName, teacher: teacher, type: type,
+                  room: room, isOnline: isOnline, link: link, startTime: startTime, isElective: isElective, dates: dates)
+       }
 }

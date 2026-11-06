@@ -3,7 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 21.10.2026.
-//  Updated by Maksym on 25.10.2026.
+//  Updated by Maksym on 06.11.2026.
 //
 
 import SwiftUI
@@ -12,6 +12,8 @@ struct ContentView: View {
     @ObservedObject var viewModel: ScheduleViewModel
     private let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    /// Пара, для якої відкрито редактор лінка
+    @State private var editingLesson: Lesson?
 
     /// Змінюється, коли користувач перемикає тиждень / фільтр / предмет
     private var contentKey: String {
@@ -22,7 +24,6 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // вибір групи перенесено в «Профіль»
             ScreenHeader(title: "Розклад") {
                 Menu {
                     Picker("Фільтр", selection: $viewModel.filterOption) {
@@ -45,6 +46,21 @@ struct ContentView: View {
         }
         .onAppear { viewModel.load() }
         .onReceive(timer) { _ in viewModel.refreshNow() }
+        .sheet(item: $editingLesson) { lesson in
+            LessonLinkEditorView(
+                lesson: lesson,
+                onSave: { viewModel.setLink($0, for: lesson) },
+                onRemove: { viewModel.removeLink(for: lesson) })
+        }
+    }
+
+    private func retry() {
+        Task { await viewModel.reload() }
+    }
+
+    /// Є лінк - відкриваємо. Немає - пропонуємо додати (лінки зберігаються локально)
+    private func handleTap(_ lesson: Lesson) {
+        if lesson.link != nil { viewModel.open(lesson) } else { editingLesson = lesson }
     }
 
     // MARK: тиждень
@@ -113,50 +129,136 @@ struct ContentView: View {
 
     @ViewBuilder
     private var content: some View {
-        if let error = viewModel.errorMessage {
-            Text(error)
-                .foregroundColor(.red)
-                .padding()
-            Spacer()
+        if viewModel.isLoading && !viewModel.hasSchedule {
+            loadingState
+        } else if let error = viewModel.displayedError, !viewModel.hasSchedule {
+            errorState(error)
         } else if viewModel.sections.isEmpty {
             emptyState
         } else {
+            VStack(spacing: 0) {
+                // оновлення не вдалося, але є збережений розклад
+                if let error = viewModel.displayedError { staleBanner(error) }
+                lessonList
+            }
+        }
+    }
+
+    private var lessonList: some View {
+        ScrollViewReader { proxy in
             List {
                 ForEach(viewModel.sections) { section in
                     Section(header: sectionHeader(section)) {
                         ForEach(section.lessons, id: \.id) { lesson in
-                            let isCurrent = (lesson.id == viewModel.currentLessonID)
-                            LessonRowView(lesson: lesson, isCurrent: isCurrent, onTap: {
-                                viewModel.open(lesson)
-                            }, onFilterSubject: {
-                                withAnimation(animation) { viewModel.filterBySubject(lesson.subjectName) }
-                            })
-                            .listRowBackground(rowBackground(isCurrent: isCurrent))
-                            // без відступів і роздільників, щоб лінія часу не переривалась
-                            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                            .listRowSeparator(.hidden)
+                            lessonRow(lesson, in: section)
                         }
                     }
                 }
             }
             .listStyle(.grouped)
+            .refreshable { await viewModel.reload() }
+            .animation(.easeInOut(duration: 0.4), value: viewModel.highlightedLessonID)
+            .onAppear { scrollToFocused(proxy) }
+            .onChange(of: viewModel.focusedLessonID) { _, _ in scrollToFocused(proxy) }
         }
+    }
+
+    @ViewBuilder
+    private func lessonRow(_ lesson: Lesson, in section: DaySection) -> some View {
+        let isCurrent = lesson.id == viewModel.currentLessonID
+        let isHighlighted = lesson.id == viewModel.highlightedLessonID
+        
+        LessonRowView(lesson: lesson, isCurrent: isCurrent, onTap: {
+            handleTap(lesson)
+        }, onFilterSubject: {
+            withAnimation(animation) { viewModel.filterBySubject(lesson.subjectName) }
+        }, onEditLink: {
+            editingLesson = lesson
+        }, dateKey: section.dateKey)
+        .listRowBackground(rowBackground(isCurrent: isCurrent, isHighlighted: isHighlighted))
+        .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+        .listRowSeparator(.hidden)
+    }
+    
+    /// Після переходу з «Головної» прокручуємо до потрібної пари
+    private func scrollToFocused(_ proxy: ScrollViewProxy) {
+        guard  viewModel.focusedLessonID != nil else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            guard let id = viewModel.focusedLessonID else {return}
+            withAnimation(animation) { proxy.scrollTo(id, anchor: .center)
+                viewModel.endFocus()
+            }
+        }
+    }
+
+
+    // MARK: стани екрана
+
+    private var loadingState: some View {
+        VStack(spacing: 12) {
+            Spacer()
+            ProgressView()
+            Text("Завантажую розклад…").font(.subheadline).foregroundColor(.secondary)
+            Spacer()
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func errorState(_ message: String) -> some View {
+        VStack(spacing: 12) {
+            Spacer()
+            Image(systemName: "wifi.exclamationmark")
+                .font(.system(size: 56))
+                .foregroundStyle(.secondary)
+            Text("Не вдалося завантажити розклад").font(.title3.weight(.semibold))
+            Text(message).font(.subheadline).foregroundColor(.secondary)
+            Button("Спробувати ще раз", action: retry)
+                .buttonStyle(.borderedProminent)
+            Spacer()
+            Spacer()
+        }
+        .multilineTextAlignment(.center)
+        .padding()
+        .frame(maxWidth: .infinity)
+    }
+
+    private func staleBanner(_ message: String) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: "wifi.slash")
+            Text("Показано збережений розклад. \(message)").lineLimit(2)
+            Spacer(minLength: 4)
+            Button("Повторити", action: retry)
+        }
+        .font(.footnote)
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(Color.orange.opacity(0.15))
     }
 
     /// Порожній стан
     private var emptyState: some View {
         let isFiltered = viewModel.subjectFilter != nil || viewModel.filterOption != .all
+        let hiddenAll = viewModel.allSubjectsHidden
+        let icon = hiddenAll ? "eye.slash" : (isFiltered ? "magnifyingglass" : "cup.and.saucer.fill")
+        let title = hiddenAll ? "Усі предмети вимкнено"
+            : (isFiltered ? "За цим фільтром пар немає"
+               : (viewModel.hasSchedule ? "Вихідний або вікно" : "Розклад порожній"))
+        let subtitle = hiddenAll ? "Увімкніть потрібні: Головна → Профіль → Мої предмети"
+            : (isFiltered ? "Змініть або скиньте фільтр"
+               : (viewModel.hasSchedule ? "У цей тиждень пар немає, відпочиньте"
+                  : "Сервер не повернув пар для групи \(viewModel.selectedGroup)"))
         return VStack(spacing: 12) {
             Spacer()
-            Image(systemName: isFiltered ? "magnifyingglass" : "cup.and.saucer.fill")
+            Image(systemName: icon)
                 .font(.system(size: 64))
                 .foregroundStyle(Color.accentColor.opacity(0.55))
                 .symbolEffect(.pulse, options: .repeating)
-            Text(isFiltered ? "За цим фільтром пар немає" : "Вихідний або вікно")
-                .font(.title3.weight(.semibold))
-            Text(isFiltered ? "Змініть або скиньте фільтр" : "У цей тиждень пар немає, відпочиньте")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+            Text(title).font(.title3.weight(.semibold))
+            Text(subtitle).font(.subheadline).foregroundColor(.secondary)
+            if !isFiltered && !hiddenAll {
+                Button("Оновити", action: retry).buttonStyle(.bordered)
+            }
             Spacer()
             Spacer()
         }
@@ -184,7 +286,8 @@ struct ContentView: View {
         .textCase(nil)
     }
 
-    private func rowBackground(isCurrent: Bool) -> Color? {
-        isCurrent ? Color.accentColor.opacity(0.18) : nil
+    private func rowBackground(isCurrent: Bool, isHighlighted: Bool) -> Color? {
+        if isHighlighted { return Color.accentColor.opacity(0.4) }
+        return isCurrent ? Color.accentColor.opacity(0.18) : nil
     }
 }

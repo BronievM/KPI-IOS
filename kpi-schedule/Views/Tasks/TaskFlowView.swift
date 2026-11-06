@@ -11,6 +11,9 @@ import SwiftUI
 struct TaskFlowView: View {
     /// Coordinator створюється в `RootView`, щоб інші вкладки могли відкрити завдання
     @ObservedObject var coordinator: TaskCoordinator
+    /// Не nil, коли деталі відкрито з іншої вкладки: «Назад» веде туди (`backTitle`: її назва)
+    var backTitle: String? = nil
+    var onBack: (() -> Void)? = nil
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
@@ -18,7 +21,7 @@ struct TaskFlowView: View {
                 .navigationDestination(for: TaskRoute.self) { route in
                     switch route {
                     case .detail(let id):
-                        TaskDetailScreen(viewModel: coordinator.makeDetailViewModel(id: id))
+                        TaskDetailScreen(viewModel: coordinator.makeDetailViewModel(id: id), backTitle: backTitle, onBack: onBack)
                     }
                 }
         }

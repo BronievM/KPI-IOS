@@ -15,7 +15,13 @@ struct TaskDetailScreen: View {
     @Environment(\.locale) private var locale
 
     /// @autoclosure запобігає зайвому перестворенню ViewModel при оновленні батьківського View.
-    init(viewModel: @autoclosure @escaping () -> TaskDetailViewModel) {
+    private let backTitle: String?
+    private let onBack: (() -> Void)?
+
+    init(viewModel: @autoclosure @escaping () -> TaskDetailViewModel,
+         backTitle: String? = nil, onBack: (() -> Void)? = nil) {
+        self.backTitle = backTitle
+        self.onBack = onBack
         _viewModel = StateObject(wrappedValue: viewModel())
     }
 
@@ -29,13 +35,29 @@ struct TaskDetailScreen: View {
         }
         .navigationTitle("Завдання")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(onBack != nil)
         .toolbar {
+            if let onBack {
+                // замість стандартної «‹ Завдання»: веде на вкладку, звідки відкрили
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left").fontWeight(.semibold)
+                            Text(backTitle ?? "Назад")
+                        }
+                    }
+                }
+            }
+            
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if let text = viewModel.shareText {
                     ShareLink(item: text)       // поділитися завданням
                 }
-                Button("Змінити", action: viewModel.editTapped)
-                    .disabled(viewModel.task == nil)
+                Button( action: viewModel.editTapped) {
+                    Image(systemName: "pencil")
+                }
+                .accessibilityLabel("Змінити")
+                .disabled(viewModel.task == nil)
             }
         }
         // вібрація, лише коли завдання стало виконаним
@@ -99,18 +121,22 @@ struct TaskDetailScreen: View {
                 }
 
                 if let link = task.link {
-                    VStack(spacing: 6) {
                         Button(action: viewModel.openLink) {
-                            Label("Матеріали (URL)", systemImage: "link")
-                        }
-                        .buttonStyle(.bordered)
-                        Text(link)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.center)
+                            VStack(spacing: 4) {
+                                Label("Матеріали (URL)", systemImage: "link")
+                                    .frame(maxWidth: .infinity)
+                                
+                                Text(link)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                                    .truncationMode(.middle)
+                            }
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                            .padding()
+                            .background(Color.accentColor.opacity(0.15), in: RoundedRectangle(cornerRadius: 12 ))
                     }
-                    .frame(maxWidth: .infinity)
+                        .buttonStyle(.plain)
                 }
 
                 if !task.attachments.isEmpty {

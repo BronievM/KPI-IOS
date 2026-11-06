@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5023F30D309E9A6C00692C8B /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023F30C309E9A6C00692C8B /* NetworkTests.swift */; };
 		5079894C308FC0330026CB48 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798943308FC0310026CB48 /* ScheduleItem.swift */; };
 		5079894D308FC0330026CB48 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798944308FC0310026CB48 /* Weekday.swift */; };
 		5079894E308FC0330026CB48 /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50798945308FC0310026CB48 /* LessonType.swift */; };
@@ -55,6 +56,15 @@
 		507989AF308FE0640026CB48 /* ScheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */; };
 		507989B0308FE0640026CB48 /* TaskExtrasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AC308FE0640026CB48 /* TaskExtrasTests.swift */; };
 		507989B1308FE0640026CB48 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507989AD308FE0640026CB48 /* TaskTests.swift */; };
+		508C7262309E0D7F00B9F31D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7261309E0D7F00B9F31D /* APIClient.swift */; };
+		508C7264309E154000B9F31D /* RemoteScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7263309E153F00B9F31D /* RemoteScheduleRepository.swift */; };
+		508C7266309E16CA00B9F31D /* CampusScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7265309E16CA00B9F31D /* CampusScheduleMapper.swift */; };
+		508C7269309E214900B9F31D /* ElectiveStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7268309E214900B9F31D /* ElectiveStore.swift */; };
+		508C726B309E248A00B9F31D /* ElectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C726A309E248A00B9F31D /* ElectivesView.swift */; };
+		508C726D309E24D500B9F31D /* GroupPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C726C309E24D500B9F31D /* GroupPickerView.swift */; };
+		508C7270309E269200B9F31D /* LessonLinkEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C726F309E269200B9F31D /* LessonLinkEditorView.swift */; };
+		508C7272309E82F600B9F31D /* MockSheduleAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7271309E82F600B9F31D /* MockSheduleAPIService.swift */; };
+		508C7274309E833900B9F31D /* LessonLinkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C7273309E833900B9F31D /* LessonLinkStore.swift */; };
 		5091E8DA3061107200C83BDC /* kpi_scheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8D93061107200C83BDC /* kpi_scheduleUITests.swift */; };
 		5091E8DC3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E8DB3061107200C83BDC /* kpi_scheduleUITestsLaunchTests.swift */; };
 		50C550A6308FAB59009F6D8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5506E308FAB58009F6D8B /* Assets.xcassets */; };
@@ -80,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5023F30C309E9A6C00692C8B /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		50798943308FC0310026CB48 /* ScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
 		50798944308FC0310026CB48 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		50798945308FC0310026CB48 /* LessonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
@@ -128,6 +139,15 @@
 		507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewModelTests.swift; sourceTree = "<group>"; };
 		507989AC308FE0640026CB48 /* TaskExtrasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExtrasTests.swift; sourceTree = "<group>"; };
 		507989AD308FE0640026CB48 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
+		508C7261309E0D7F00B9F31D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		508C7263309E153F00B9F31D /* RemoteScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteScheduleRepository.swift; sourceTree = "<group>"; };
+		508C7265309E16CA00B9F31D /* CampusScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusScheduleMapper.swift; sourceTree = "<group>"; };
+		508C7268309E214900B9F31D /* ElectiveStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectiveStore.swift; sourceTree = "<group>"; };
+		508C726A309E248A00B9F31D /* ElectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectivesView.swift; sourceTree = "<group>"; };
+		508C726C309E24D500B9F31D /* GroupPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPickerView.swift; sourceTree = "<group>"; };
+		508C726F309E269200B9F31D /* LessonLinkEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLinkEditorView.swift; sourceTree = "<group>"; };
+		508C7271309E82F600B9F31D /* MockSheduleAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSheduleAPIService.swift; sourceTree = "<group>"; };
+		508C7273309E833900B9F31D /* LessonLinkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLinkStore.swift; sourceTree = "<group>"; };
 		5091E8BB3061107000C83BDC /* kpi-schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kpi-schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E8CB3061107200C83BDC /* kpi-scheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E8D53061107200C83BDC /* kpi-scheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kpi-scheduleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +206,15 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
+		508C7267309E16D000B9F31D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				508C7261309E0D7F00B9F31D /* APIClient.swift */,
+				508C7271309E82F600B9F31D /* MockSheduleAPIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		5091E8B23061107000C83BDC = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +257,7 @@
 				507989AB308FE0640026CB48 /* ScheduleViewModelTests.swift */,
 				507989AC308FE0640026CB48 /* TaskExtrasTests.swift */,
 				507989AD308FE0640026CB48 /* TaskTests.swift */,
+				5023F30C309E9A6C00692C8B /* NetworkTests.swift */,
 			);
 			path = "kpi-scheduleTests";
 			sourceTree = "<group>";
@@ -277,6 +307,9 @@
 		50C5507E308FAB58009F6D8B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				508C7267309E16D000B9F31D /* Network */,
+				508C7263309E153F00B9F31D /* RemoteScheduleRepository.swift */,
+				508C7265309E16CA00B9F31D /* CampusScheduleMapper.swift */,
 				50798970308FC0730026CB48 /* FileTaskRepository.swift */,
 				5079896D308FC0720026CB48 /* InMemoryTaskRepository.swift */,
 				50798968308FC0720026CB48 /* JSONScheduleRepository.swift */,
@@ -287,6 +320,8 @@
 				50798967308FC0710026CB48 /* SubjectsProviding.swift */,
 				5079896F308FC0720026CB48 /* TaskRepository.swift */,
 				5079896B308FC0720026CB48 /* TestData */,
+				508C7268309E214900B9F31D /* ElectiveStore.swift */,
+				508C7273309E833900B9F31D /* LessonLinkStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -333,6 +368,9 @@
 				50798987308FC0980026CB48 /* RootView.swift */,
 				50798988308FC0980026CB48 /* ScreenHeader.swift */,
 				50798992308FC0990026CB48 /* Tasks */,
+				508C726A309E248A00B9F31D /* ElectivesView.swift */,
+				508C726C309E24D500B9F31D /* GroupPickerView.swift */,
+				508C726F309E269200B9F31D /* LessonLinkEditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,14 +512,18 @@
 				50798951308FC0330026CB48 /* Lesson.swift in Sources */,
 				50798979308FC0730026CB48 /* LinkOpening.swift in Sources */,
 				50798959308FC0430026CB48 /* TaskCoordinator.swift in Sources */,
+				508C7274309E833900B9F31D /* LessonLinkStore.swift in Sources */,
 				50798972308FC0730026CB48 /* ScheduleClock.swift in Sources */,
+				508C726B309E248A00B9F31D /* ElectivesView.swift in Sources */,
 				5079895C308FC0430026CB48 /* TaskNavigating.swift in Sources */,
 				5079899B308FC0990026CB48 /* TaskFormScreen.swift in Sources */,
 				50C550A8308FAB59009F6D8B /* kpi_scheduleApp.swift in Sources */,
 				50798960308FC0510026CB48 /* LessonDTOAdapter.swift in Sources */,
 				50798977308FC0730026CB48 /* ScheduleRepository.swift in Sources */,
+				508C726D309E24D500B9F31D /* GroupPickerView.swift in Sources */,
 				5079899D308FC0990026CB48 /* TaskListScreen.swift in Sources */,
 				50798973308FC0730026CB48 /* SubjectsProviding.swift in Sources */,
+				508C7266309E16CA00B9F31D /* CampusScheduleMapper.swift in Sources */,
 				50798954308FC0330026CB48 /* StudyTask.swift in Sources */,
 				5079894E308FC0330026CB48 /* LessonType.swift in Sources */,
 				50798997308FC0990026CB48 /* HomeView.swift in Sources */,
@@ -491,8 +533,10 @@
 				5079897A308FC0730026CB48 /* TaskRepository.swift in Sources */,
 				50C550A7308FAB59009F6D8B /* AppContainer.swift in Sources */,
 				5079895B308FC0430026CB48 /* TaskScreenFactory.swift in Sources */,
+				508C7262309E0D7F00B9F31D /* APIClient.swift in Sources */,
 				50798984308FC0890026CB48 /* HomeViewModel.swift in Sources */,
 				5079899C308FC0990026CB48 /* TaskListComponents.swift in Sources */,
+				508C7269309E214900B9F31D /* ElectiveStore.swift in Sources */,
 				5079897B308FC0730026CB48 /* FileTaskRepository.swift in Sources */,
 				50798950308FC0330026CB48 /* TaskProgress.swift in Sources */,
 				50798952308FC0330026CB48 /* LessonTime.swift in Sources */,
@@ -500,14 +544,17 @@
 				50798999308FC0990026CB48 /* TaskDetailScreen.swift in Sources */,
 				50798985308FC0890026CB48 /* TaskListViewModel.swift in Sources */,
 				50798978308FC0730026CB48 /* InMemoryTaskRepository.swift in Sources */,
+				508C7264309E154000B9F31D /* RemoteScheduleRepository.swift in Sources */,
 				50798998308FC0990026CB48 /* ProgressBarView.swift in Sources */,
 				50798961308FC0510026CB48 /* LessonBuilder.swift in Sources */,
+				508C7272309E82F600B9F31D /* MockSheduleAPIService.swift in Sources */,
 				50798976308FC0730026CB48 /* SampleTasks.swift in Sources */,
 				5079899E308FC0990026CB48 /* TaskRowView.swift in Sources */,
 				50798962308FC0510026CB48 /* LessonFilterStrategy.swift in Sources */,
 				50798995308FC0990026CB48 /* ScreenHeader.swift in Sources */,
 				5079894C308FC0330026CB48 /* ScheduleItem.swift in Sources */,
 				50798994308FC0990026CB48 /* RootView.swift in Sources */,
+				508C7270309E269200B9F31D /* LessonLinkEditorView.swift in Sources */,
 				50798983308FC0890026CB48 /* ScheduleViewModel.swift in Sources */,
 				50798975308FC0730026CB48 /* SampleSchedule.swift in Sources */,
 				50798974308FC0730026CB48 /* JSONScheduleRepository.swift in Sources */,
@@ -522,6 +569,7 @@
 			files = (
 				507989AF308FE0640026CB48 /* ScheduleViewModelTests.swift in Sources */,
 				507989B0308FE0640026CB48 /* TaskExtrasTests.swift in Sources */,
+				5023F30D309E9A6C00692C8B /* NetworkTests.swift in Sources */,
 				507989B1308FE0640026CB48 /* TaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

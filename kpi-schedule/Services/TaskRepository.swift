@@ -28,7 +28,7 @@ protocol AttachmentStoring {
     func removeAll(for taskID: UUID)
 }
 
-/// Локальне збереження у Documents/Attachments.
+/// Локальне збереження у Documents/Attachments
 struct FileAttachmentStorage: AttachmentStoring {
     private let root: URL
 

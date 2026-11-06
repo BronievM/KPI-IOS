@@ -3,7 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 21.10.2026.
-//  Updated by Maksym on 25.10.2026.
+//  Updated by Maksym on 06.11.2026.
 //
 
 import Foundation
@@ -21,7 +21,8 @@ struct LessonDTO: Decodable {
     let online: Bool?
     let link: String?
     /// Вибірковий предмет (необов'язкове поле; немає = обов'язковий)
-    let elective: Bool?
+    var elective: Bool?
+    var dates: [String]?
 }
 
 /// PATTERN: Adapter.
@@ -41,20 +42,21 @@ struct LessonDTOAdapter {
                 .link(dto.link)
                 .start(dto.time.flatMap { LessonTime($0) })
                 .elective(dto.elective == true)
+                .dates(dto.dates ?? [])
             if dto.online == true { builder.online() }
             let lesson = builder.build()
 
-            if let day = days.first(where: { $0.dayOfWeek == dto.day && $0.weekType == week }) {
-                day.addLesson(lesson)
+            if let index = days.firstIndex(where: { $0.dayOfWeek == dto.day && $0.weekType == week }) {
+                days[index].addLesson(lesson)
             } else {
-                let day = DailySchedule(dayOfWeek: dto.day, weekType: week)
+                var day = DailySchedule(dayOfWeek: dto.day, weekType: week)
                 day.addLesson(lesson)
                 days.append(day)
             }
         }
 
-        for day in days {
-            day.lessons.sort {
+        for index in days.indices {
+            days[index].lessons.sort {
                 ($0.startTime?.minutesFromMidnight ?? Int.max) < ($1.startTime?.minutesFromMidnight ?? Int.max)
             }
         }

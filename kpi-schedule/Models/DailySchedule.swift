@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DailySchedule {
+struct DailySchedule {
     let dayOfWeek: String
     let weekType: WeekType
     var lessons: [Lesson]
@@ -18,10 +18,9 @@ class DailySchedule {
         self.lessons = []
     }
 
-    /// Розпізнаний день тижня (nil, якщо назва невідома).
     var weekday: Weekday? { Weekday(name: dayOfWeek) }
 
-    func addLesson(_ lesson: Lesson) {
+    mutating func addLesson(_ lesson: Lesson) {
         lessons.append(lesson)
     }
 

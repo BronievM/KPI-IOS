@@ -3,7 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 21.10.2026.
-//  Updated by Maksym on 25.10.2026.
+//  Updated by Maksym on 06.11.2026.
 //
 
 import SwiftUI
@@ -16,6 +16,10 @@ struct LessonRowView: View {
     let onTap: () -> Void
     /// Дія «Фільтрувати за цим предметом» у контекстному меню (nil = пункту немає)
     var onFilterSubject: (() -> Void)? = nil
+    /// Дія «Додати / змінити лінк» у контекстному меню (nil = пункту немає)
+    var onEditLink: (() -> Void)? = nil
+    /// Дата цього дня для підписів «спец. занять»
+    var dateKey: String? = nil
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var pulse = false
@@ -46,6 +50,12 @@ struct LessonRowView: View {
                 Text(lesson.subjectName).font(.title3).fontWeight(.bold)
                 Text("Викладач: \(lesson.teacher)").font(.subheadline).foregroundColor(.secondary)
                 locationRow
+                if let special = lesson.occurrenceText(on: dateKey) {
+                    Text(special).font(.caption.weight(.semibold)).foregroundColor(.accentColor)
+                }
+                if let next = lesson.nextDatesText(after: dateKey) {
+                    Text(next).font(.caption).foregroundColor(.secondary)
+                }
             }
             .padding(.vertical, 12)
         }
@@ -55,6 +65,11 @@ struct LessonRowView: View {
             if let link = lesson.link {
                 Button { UIPasteboard.general.string = link } label: {
                     Label("Скопіювати лінк", systemImage: "link")
+                }
+            }
+            if let onEditLink {
+                Button(action: onEditLink) {
+                    Label(lesson.link == nil ? "Додати лінк" : "Змінити лінк", systemImage: "link.badge.plus")
                 }
             }
             Button { UIPasteboard.general.string = lesson.teacher } label: {

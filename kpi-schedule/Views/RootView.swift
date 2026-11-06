@@ -3,7 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 24.10.2026.
-//  Updated by Maksym on 26.10.2026.
+//  Updated by Maksym on 06.11.2026.
 //
 
 import SwiftUI
@@ -39,6 +39,9 @@ struct RootView: View {
     
     /// Спочатку відкривається «Головна»
     @State private var selectedTab: AppTab = .home
+
+    /// Звідки відкрито деталі завдання (наприклад, «Головна»). Лише тоді «Назад» у деталях веде туди, а не до списку
+    @State private var taskOrigin: AppTab?
     
     init(scheduleViewModel: ScheduleViewModel, taskFactory: TaskScreenFactory, taskRepository: TaskRepository) {
         self.scheduleViewModel = scheduleViewModel
@@ -60,6 +63,10 @@ struct RootView: View {
                 select(.schedule)
             }
         }
+        // повернулися до списку завдань: «походження» більше не діє
+        .onChange(of: taskCoordinator.path) { _, path in
+            if path.isEmpty { taskOrigin = nil }
+        }
     }
     
     @ViewBuilder
@@ -73,12 +80,16 @@ struct RootView: View {
             HomeView(
                 schedule: scheduleViewModel,
                 tasks: taskRepository,
-                onOpenTask: openTask
+                onOpenTask: openTask,
+                onOpenSchedule: openLesson,
+                onOpenTasks: openTaskList
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
         case .tasks:
-            TaskFlowView(coordinator: taskCoordinator)
+            TaskFlowView(coordinator: taskCoordinator,
+                         backTitle: taskOrigin?.title,
+                         onBack: taskOrigin == nil ? nil : goBack)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         
@@ -87,22 +98,45 @@ struct RootView: View {
     // MARK: навігація
     
     private func select(_ tab: AppTab) {
-        withAnimation(.snappy) { selectedTab = tab }
+        // без анімації, як у звичайному TabView: інакше видно перехресне розчинення екранів
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) { selectedTab = tab }
     }
     
     /// З «Головної» відкриваємо деталі завдання
     private func openTask(_ id: UUID) {
         taskCoordinator.popToList()      // щоб не накопичувати екрани
         taskCoordinator.showDetail(id: id)
+        taskOrigin = selectedTab
         select(.tasks)
     }
+
+    /// З «Головної» відкриваємо пару в розкладі
+    private func openLesson(_ lesson: Lesson) {
+        scheduleViewModel.focus(on: lesson)
+        select(.schedule)
+    }
+
+    /// «Назад» з деталей завдання, відкритих з іншої вкладки: одразу туди, без миготіння списку
+    private func goBack() {
+        guard let origin = taskOrigin else { return }
+        taskOrigin = nil
+        select(origin)
+        taskCoordinator.popToList()
+    }
     
+    private func openTaskList(){
+        taskCoordinator.popToList()
+        select(.tasks)
+    }
+
     // MARK: власний tab bar
     
     private var tabBar: some View {
         HStack(spacing: 0) {
             ForEach(AppTab.allCases, id: \.self) { tab in
-                Button { select(tab) } label: {
+                Button { taskOrigin = nil; select(tab) } label: {
                     VStack(spacing: 2) {
                         Image(systemName: tab.symbol).font(.title3)
                         Text(tab.title).font(.caption2)

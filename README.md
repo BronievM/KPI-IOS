@@ -4,9 +4,63 @@
 
 - **Версія XCode:** 15.3
 - **Мінімальна версія iOS:** 17.4
-- **Теги для перевірки:** [`practical-1`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-1), [`practical-2`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-2), [`practical-3`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-3)
+- **Теги для перевірки:** [`practical-1`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-1), [`practical-2`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-2), [`practical-3`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-3), [`practical-4`](https://github.com/BronievM/KPI-IOS/releases/tag/practical-4)
 
-## Практична робота 3: навігація та переходи
+
+## Практична робота 4: мережа та стани екрана (тег `practical-4`)
+
+Розклад береться з реального API КПІ Campus. Власного сервера немає, тому завдання та лінки на пари кожен користувач редагує **локально** (Documents / UserDefaults).
+
+### Опис API
+
+
+| | |
+|---|---|
+| Базова адреса | `https://api.campus.kpi.ua` |
+| Групи | `GET /schedule/groups` → масив `[{id, name, faculty}]` або `{"data": [...]}` |
+| Розклад | `GET /schedule/lessons?groupId=<id>` → `{scheduleFirstWeek: [{day, pairs: [...]}], scheduleSecondWeek: [...]}` |
+| Заголовки | `Accept: application/json`, таймаут 15 с |
+| Авторизація | не потрібна |
+| Модель | `CampusPair` (`name`, `time`, `type`, `lecturer.name`, `location.title`, `dates`) → `CampusScheduleMapper` → `LessonDTO` → `LessonDTOAdapter` → `Lesson` |
+
+### Архітектура мережі
+
+- `Services/Network/APIClient.swift`: єдине місце з `URLSession`; протокол `ScheduleAPIService`, `URLSession` передається ззовні. Розрізняє `transportError` (немає мережі, таймаут), `invalidHTTPStatus` (статус перевіряється **до** декодування) і `decodingError`.
+- `RemoteScheduleRepository` отримує `ScheduleAPIService` через ініціалізатор і кешує відповіді на диску.
+- `ScheduleViewModel` (стани `isLoading`, `refreshError`, `hasSchedule`) → `ContentView` / `HomeView`. Запити асинхронні (`async/await`), UI оновлюється на `@MainActor`.
+- Екран розкладу: завантаження, дані, порожній результат, помилка з кнопкою **«Спробувати ще раз»**, pull-to-refresh. Якщо оновлення не вдалося, але є кеш, показується збережений розклад з банером «Повторити».
+
+### Як перевірити стани
+
+Реальний запит: звичайний запуск (потрібен інтернет). Керовані сценарії без залежності від API: Xcode → Product → Scheme → Edit Scheme → Run → Arguments Passed On Launch → додати `-api-mode <режим>`:
+
+| Режим | Що відтворює |
+|---|---|
+| `success` | успішна відповідь із тестовими даними |
+| `empty` | порожня відповідь → стан «Розклад порожній» |
+| `offline` | транспортна помилка → екран помилки + «Спробувати ще раз» |
+| `http500` | HTTP 500 |
+| `badjson` | помилка декодування |
+| `flaky` | перший запит падає, повтор по кнопці успішний |
+
+У цих режимах використовується окремий тимчасовий кеш, справжні дані не чіпаються. Без аргументу застосунок працює з реальним API.
+
+Автотести (`NetworkTests.swift`): URLProtocol-заглушка для `APIClient` (успіх, статус до декодування, зламаний JSON, транспортна помилка) і всі стани `ScheduleViewModel` через `MockScheduleAPIService`.
+
+### «Спец. пари» (поле `dates`)
+
+Якщо в парі з API є список `dates`, вона йде **лише в ці дати**, а не щотижня. Дати приводяться до `yyyy-MM-dd` (`LessonDates.normalize`), якщо формат не розпізнається - повертається формат без змін. На екрані розкладу пара показується тільки в день, що збігається з однією з дат вибраного тижня, з підписом «Спец. заняття · N з M» і наступними датами. «Головна» теж не пропонує таку пару в інші дні.
+
+### Предмети у формі завдання
+
+Список предметів береться з реального розкладу вибраної групи (кеш API), лише з тих, що обрано в «Мої предмети» (`SelectedGroupSubjectsProvider`). Якщо предмети ще не обирались, то показуються усі.
+
+### Лінки на пари
+
+Довгий тап по парі → «Додати / змінити лінк»; тап по парі без лінка відкриває редактор. Лінк діє на всі пари цього типу з предмета й зберігається на пристрої.
+
+
+## Практична робота 3: навігація та переходи (тег `practical-3`)
 
 Додано трекер завдань із кількома екранами та окремим шаром навігації (**Coordinator**). Три вкладки: **«Розклад»**, **«Головна»** (стартова), **«Завдання»**.
 
@@ -36,7 +90,7 @@
 
 Докладніший покроковий сценарій: [docs/navigation.md](docs/navigation.md#10-інструкція-проходження-сценарію).
 
-## Практична робота 2: архітектура та патерни
+## Практична робота 2: архітектура та патерни (тег `practical-2`)
 
 Застосунок переведено на **MVVM**, додано патерни Builder, Adapter, Strategy, розділено відповідальності та винесено залежності за протоколи (можна підмінити тестовою реалізацією).
 

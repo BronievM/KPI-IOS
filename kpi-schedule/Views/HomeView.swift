@@ -15,9 +15,13 @@ struct HomeView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
     private let onOpenTask: (UUID) -> Void
+    private let onOpenSchedule: (Lesson) -> Void
+    private let onOpenTasks: () -> Void
 
-    init(schedule: ScheduleViewModel, tasks: TaskRepository, onOpenTask: @escaping (UUID) -> Void) {
+    init(schedule: ScheduleViewModel, tasks: TaskRepository, onOpenTask: @escaping (UUID) -> Void,         onOpenSchedule: @escaping (Lesson) -> Void = { _ in }, onOpenTasks: @escaping () -> Void = {}) {
         self.onOpenTask = onOpenTask
+        self.onOpenSchedule = onOpenSchedule
+        self.onOpenTasks = onOpenTasks
         _schedule = ObservedObject(wrappedValue: schedule)
         _viewModel = StateObject(wrappedValue: HomeViewModel(schedule: schedule, tasks: tasks))
     }
@@ -42,6 +46,7 @@ struct HomeView: View {
                 .padding()
                 .animation(reduceMotion ? nil : .snappy, value: viewModel.deadlines.map(\.id))
             }
+            .refreshable { await viewModel.reload() }
         }
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .onAppear { viewModel.refresh() }
@@ -53,10 +58,30 @@ struct HomeView: View {
 
     @ViewBuilder
     private var lessonCard: some View {
+        if schedule.isLoading && !schedule.hasSchedule {
+            card(title: "Розклад", symbol: "calendar", tint: .secondary) {
+                HStack(spacing: 12) {
+                    ProgressView()
+                    Text("Завантажую розклад…").foregroundColor(.secondary)
+                }
+            }
+        } else if let error = schedule.displayedError, !schedule.hasSchedule {
+            card(title: "Розклад недоступний", symbol: "wifi.exclamationmark", tint: .orange) {
+                Text(error).font(.subheadline).foregroundColor(.secondary)
+                Button("Спробувати ще раз") { Task { await viewModel.reload() } }
+                    .buttonStyle(.bordered)
+            }
+        } else {
+            lessonStateCard
+        }
+    }
+
+    @ViewBuilder
+    private var lessonStateCard: some View {
         switch viewModel.lessonState {
         case .current(let lesson, let progress, let minutesLeft):
             card(title: "Зараз іде пара", symbol: "dot.radiowaves.left.and.right", tint: .accentColor) {
-                lessonInfo(lesson)
+                lessonInfoButton(lesson)
                 VStack(alignment: .leading, spacing: 6) {
                     ProgressBarView(progress: progress)
                     Text("Залишилось \(HomeViewModel.durationText(minutesLeft))")
@@ -67,7 +92,7 @@ struct HomeView: View {
             }
         case .upcoming(let lesson, let when):
             card(title: "Наступна пара · \(when)", symbol: "clock.fill", tint: .accentColor) {
-                lessonInfo(lesson)
+                lessonInfoButton(lesson)
                 joinButton(lesson)
             }
         case .none:
@@ -75,6 +100,20 @@ struct HomeView: View {
                 Text("Вихідний або вікно").font(.title3.weight(.semibold))
             }
         }
+    }
+
+    /// Тап по парі відкриває її в розкладі (кнопка «Назад» поверне на «Головну»)
+    private func lessonInfoButton(_ lesson: Lesson) -> some View {
+        Button { onOpenSchedule(lesson) } label: {
+            HStack(alignment: .center, spacing: 8) {
+                lessonInfo(lesson)
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.secondary)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 
     private func lessonInfo(_ lesson: Lesson) -> some View {
@@ -87,6 +126,9 @@ struct HomeView: View {
                 }
             }
             Text(lesson.subjectName).font(.title3.bold())
+            if !lesson.dates.isEmpty {
+                Text("Спец. заняття").font(.caption.weight(.semibold)).foregroundColor(.accentColor)
+            }
             Text("Викладач: \(lesson.teacher)").font(.subheadline).foregroundColor(.secondary)
             Text(lesson.getLocation()).font(.caption).foregroundColor(.secondary)
         }
@@ -136,13 +178,22 @@ struct HomeView: View {
 
     private var progressCard: some View {
         card(title: "Прогрес завдань", symbol: "checklist", tint: .green) {
-            HStack {
-                Text("\(viewModel.progress.done) з \(viewModel.progress.total) виконано")
-                    .font(.subheadline)
-                    .contentTransition(.numericText())
-                Spacer()
+            Button(action: onOpenTasks) {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("\(viewModel.progress.done) з \(viewModel.progress.total) виконано")
+                            .font(.subheadline)
+                            .contentTransition(.numericText())
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.secondary)
+                    }
+                    ProgressBarView(progress: viewModel.progress.fraction)
+                }
+                .contentShape(Rectangle())
             }
-            ProgressBarView(progress: viewModel.progress.fraction)
+            .buttonStyle(.plain)
         }
     }
 
@@ -167,7 +218,7 @@ struct HomeView: View {
     }
 }
 
-/// Профіль: тут живе вибір групи
+/// Профіль
 struct ProfileView: View {
     @ObservedObject var viewModel: ScheduleViewModel
     @Environment(\.dismiss) private var dismiss
@@ -176,18 +227,46 @@ struct ProfileView: View {
         NavigationStack {
             Form {
                 Section {
-                    Picker("Група", selection: $viewModel.selectedGroup) {
-                        ForEach(viewModel.groups, id: \.self) { group in
-                            Text(group).tag(group)
-                        }
+                    NavigationLink {
+                        GroupPickerView(viewModel: viewModel)
+                    } label: {
+                        LabeledContent("Група", value: viewModel.selectedGroup)
                     }
-                    .pickerStyle(.navigationLink)
                 } header: {
                     Text("Навчальна група")
                 } footer: {
-                    Text("Група визначає, який розклад показується на вкладках «Головна» і «Розклад».")
+                    if viewModel.directoryError != nil {
+                        Label("Не вдалося завантажити список груп. Підключіться до інтернету й спробуйте ще раз.", systemImage: "wifi.slash")
+                    } else {
+                        Text("Група визначає, який розклад показується на вкладках «Головна» і «Розклад».")
+                    }
+                }
+
+                Section {
+                    if viewModel.subjectOptions.isEmpty {
+                        Text("Предмети з'являться після завантаження розкладу")
+                            .foregroundColor(.secondary)
+                    } else {
+                        NavigationLink {
+                            ElectivesView(viewModel: viewModel)
+                        } label: {
+                            LabeledContent(
+                                "Мої предмети",
+                                value: "\(viewModel.subjectOptions.filter { viewModel.isSubjectEnabled($0.name) }.count) з \(viewModel.subjectOptions.count)"
+                            )
+                        }
+                    }
+                } header: {
+                    Text("Вибіркові")
+                } footer: {
+                    if viewModel.displayedError != nil {
+                        Label("Не вдалося оновити розклад. Показано збережений — підключіться до інтернету.", systemImage: "wifi.slash")
+                    } else {
+                        Text("Познач предмети, які ти відвідуєш. Решта не показуватимуться в розкладі.")
+                    }
                 }
             }
+            .refreshable { await viewModel.reload() }
             .navigationTitle("Профіль")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

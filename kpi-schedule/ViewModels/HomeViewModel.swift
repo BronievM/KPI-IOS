@@ -3,6 +3,7 @@
 //  kpi-schedule
 //
 //  Created by Maksym on 25.10.2026.
+//  Edited by Maksym on 06.11.2026
 //
 
 import Foundation
@@ -10,7 +11,7 @@ import Combine
 
 /// Що показати в картці «пара»
 enum LessonState {
-    /// Пара йде зараз: `progress` від 0 до 1, `minutesLeft` до кінця
+    /// Пара йде зараз: progress від 0 до 1, minutesLeft до кінця
     case current(Lesson, progress: Double, minutesLeft: Int)
     /// Наступна пара; `when`: «через 1 год 20 хв», «завтра о 10:25»
     case upcoming(Lesson, when: String)
@@ -56,6 +57,13 @@ final class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
+    @MainActor
+    func reload() async {
+        await schedule.reload() 
+        updateLesson()
+        updateTasks(tasks.allTasks())
+    }
+    
     /// Викликається при появі екрана і за таймером
     func refresh() {
         if schedule.groups.isEmpty { schedule.load() }   // «Головна» може відкритися раніше за «Розклад»
@@ -89,14 +97,15 @@ final class HomeViewModel: ObservableObject {
     static func lessonState(days: [DailySchedule], at now: TimeSnapshot) -> LessonState {
         guard let today = now.weekday else { return .none }
 
-        func timed(_ week: WeekType, _ weekday: Weekday) -> [(lesson: Lesson, time: LessonTime)] {
+        func timed(_ week: WeekType, _ weekday: Weekday, dateKey: String?) -> [(lesson: Lesson, time: LessonTime)] {
             days.filter { $0.weekType == week && $0.weekday == weekday }
                 .flatMap(\.lessons)
+                .filter { $0.occurs(on: dateKey) }       // «спец. пари» лише в свої дати
                 .compactMap { lesson in lesson.startTime.map { (lesson: lesson, time: $0) } }
                 .sorted { $0.time < $1.time }
         }
 
-        if let running = timed(now.week, today).first(where: { $0.time.contains(minutes: now.minutes) }) {
+        if let running = timed(now.week, today, dateKey: now.dateKey()).first(where: { $0.time.contains(minutes: now.minutes) }) {
             let total = LessonTime.pairDurationMinutes
             let elapsed = now.minutes - running.time.minutesFromMidnight
             return .current(running.lesson, progress: Double(elapsed) / Double(total), minutesLeft: total - elapsed)
@@ -108,7 +117,7 @@ final class HomeViewModel: ObservableObject {
             // після неділі тиждень міняється
             let flipped = (index / 7) % 2 == 1
             let week: WeekType = flipped ? (now.week == .first ? .second : .first) : now.week
-            let candidates = timed(week, weekday).filter { offset > 0 || $0.time.minutesFromMidnight > now.minutes }
+            let candidates = timed(week, weekday, dateKey: now.dateKey(addingDays: offset)).filter { offset > 0 || $0.time.minutesFromMidnight > now.minutes }
             guard let next = candidates.first else { continue }
 
             let when: String

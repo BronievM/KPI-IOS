@@ -15,7 +15,7 @@ struct MockScheduleRepository: ScheduleRepository {
     init(schedules: [(group: String, days: [DailySchedule])]? = nil) {
         if let schedules { self.schedules = schedules; return }
 
-        let monday = DailySchedule(dayOfWeek: "Понеділок", weekType: .first)
+        var monday = DailySchedule(dayOfWeek: "Понеділок", weekType: .first)
         monday.addLesson(
             LessonBuilder().subject("Демонстраційний предмет").teacher("Викладач Д. Д.").type(.lecture).online().build()
         )
