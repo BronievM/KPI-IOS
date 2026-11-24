@@ -19,13 +19,13 @@
 | Базова адреса | `https://api.campus.kpi.ua` |
 | Групи | `GET /schedule/groups` → масив `[{id, name, faculty}]` або `{"data": [...]}` |
 | Розклад | `GET /schedule/lessons?groupId=<id>` → `{scheduleFirstWeek: [{day, pairs: [...]}], scheduleSecondWeek: [...]}` |
-| Заголовки | `Accept: application/json`, таймаут 15 с |
+| Заголовки | `Accept: application/json, text/plain, */*`, `Origin` / `Referer` (`https://schedule.kpi.ua`), браузерний `User-Agent`, таймаут 15 с |
 | Авторизація | не потрібна |
 | Модель | `CampusPair` (`name`, `time`, `type`, `lecturer.name`, `location.title`, `dates`) → `CampusScheduleMapper` → `LessonDTO` → `LessonDTOAdapter` → `Lesson` |
 
 ### Архітектура мережі
 
-- `Services/Network/APIClient.swift`: єдине місце з `URLSession`; протокол `ScheduleAPIService`, `URLSession` передається ззовні. Розрізняє `transportError` (немає мережі, таймаут), `invalidHTTPStatus` (статус перевіряється **до** декодування) і `decodingError`.
+- `Services/Network/APIClient.swift`: єдине місце з `URLSession`; протокол `ScheduleAPIService`, `URLSession` передається ззовні. Додає заголовки `Origin`/`Referer` вебклієнта (вимога API КПІ з 16.11.2026), вимикає HTTP/3 та робить один повтор при обриві з'єднання (`-1005`). Розрізняє `transportError` (немає мережі, таймаут), `invalidHTTPStatus` (статус перевіряється **до** декодування) і `decodingError`.
 - `RemoteScheduleRepository` отримує `ScheduleAPIService` через ініціалізатор і кешує відповіді на диску.
 - `ScheduleViewModel` (стани `isLoading`, `refreshError`, `hasSchedule`) → `ContentView` / `HomeView`. Запити асинхронні (`async/await`), UI оновлюється на `@MainActor`.
 - Екран розкладу: завантаження, дані, порожній результат, помилка з кнопкою **«Спробувати ще раз»**, pull-to-refresh. Якщо оновлення не вдалося, але є кеш, показується збережений розклад з банером «Повторити».
